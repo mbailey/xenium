@@ -1,0 +1,24 @@
+pull in attributes from `xm list` for running domain
+domain.list    # image for running, paused and stopped
+domain.show
+- is it set to auto start?
+domain.destroy # ajax
+domain.create  # ajax
+
+
+Domain.find(:running=true) <-- move it from Hosts
+
+Image
+- create
+
+Config
+- 
+
+Menu - make it pretty
+
+paginate ips
+ip model
+- pull ipaddress into module 
+- add values @string and @integer to ip_address
+- investigate use of range for network model
+

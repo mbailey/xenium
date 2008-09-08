@@ -1,0 +1,16 @@
+<h1>Listing ips</h1>
+
+<table>
+  <tr>
+    <th>Address</th>
+    <th>Network</th>
+    <th>Used by</th>
+  </tr>
+
+<%= render :partial => 'ip', :collection => @ips %>
+
+</table>
+
+<br />
+
+<%= link_to 'New ip', new_ip_path %>

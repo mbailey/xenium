@@ -1,0 +1,106 @@
+body { 
+	margin: 0;
+	padding: 30px;
+	font-family: "Lucida Grande", Arial, sans-serif;
+	font-size: small;
+	background-color: #b5b5b5;
+	}
+
+a { color: #77985C; }
+
+table {
+	position: relative;
+	top: -4px;
+	left: -4px;
+	width: 100%;
+	border: 1px solid #000;
+	background: #fff;
+}
+
+table th, table td {
+	margin: 0;
+	padding: 8px 20px;
+	text-align: center;
+	border-bottom: 1px solid #b5b5b5;
+}
+
+table th {
+	color: #999;
+}
+
+table .name {
+	text-align: left;
+}
+
+table tr.odd {
+	background: #e6e6e6;
+}
+
+table tr.even {
+	background: #f1f1f1;
+}
+
+table caption {
+	margin: 0;
+	padding: 8px 20px;
+	text-align: left;
+	border: 1px solid #000;
+	border-bottom: none;
+	background: #fff;
+}
+
+.table_shadow {
+	background: #919191;
+}
+
+/* rails default */
+
+body, p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size:   13px;
+  line-height: 18px;
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+
+.fieldWithErrors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#errorExplanation {
+  width: 400px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#errorExplanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+

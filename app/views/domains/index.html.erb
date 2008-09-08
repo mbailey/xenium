@@ -1,0 +1,17 @@
+<div class="table_shadow">
+	<table cellspacing="0">
+		<caption>Slices</caption>
+		<tr>
+			<th scope="col" class="name">name</th>
+			<th scope="col">state</th>
+			<th scope="col">ip address</th>
+		</tr>
+		<% @domains.each do |domain| %>
+		<tr class="<%= cycle('odd','even') %>" >
+			<td class="name"><%= domain.name %></td>		
+			<td><%= domain.running? ? 'running' : 'stopped' %></td>		
+			<td><%= domain.config.ip %></td>		
+		</tr>
+		<% end %>
+	</table>
+</div>

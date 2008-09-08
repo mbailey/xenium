@@ -1,0 +1,24 @@
+<h1>Editing ip</h1>
+
+<% form_for(@ip) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :network %><br />
+    <%= f.text_field :network %>
+  </p>
+  <p>
+    <%= f.label :address %><br />
+    <%= f.text_field :address %>
+  </p>
+  <p>
+    <%= f.label :interface %><br />
+    <%= f.text_field :interface %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @ip %> |
+<%= link_to 'Back', ips_path %>

@@ -1,0 +1,42 @@
+<%= @network.next_unused_ip %>
+
+<p>
+  <b>Name:</b>
+  <%=h @network.name %>
+</p>
+
+<p>
+  <b>Network address:</b>
+  <%=h @network.network_address %>
+</p>
+
+<p>
+  <b>First usable:</b>
+  <%=h @network.first_usable %>
+</p>
+
+<p>
+  <b>Last usable:</b>
+  <%=h @network.last_usable %>
+</p>
+
+<p>
+  <b>Gateway:</b>
+  <%=h @network.gateway %>
+</p>
+
+<p>
+  <b>Netmask:</b>
+  <%=h @network.netmask %>
+</p>
+
+<p>
+  <b>Broadcast:</b>
+  <%=h @network.broadcast %>
+</p>
+
+<%= render :partial => 'ips/ips' %>
+<%= link_to 'Edit', edit_network_path(@network) %> |
+<%= link_to 'Back', networks_path %>
+
+

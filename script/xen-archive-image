@@ -1,0 +1,47 @@
+#!/bin/bash
+#
+# xen-archive-image
+# Author: Mike Bailey <mike@bailey.net.au>
+#
+# Create a tar archive of a xen disk image 
+#
+# Config variables
+
+# XXX Add getopts and better input checking!
+
+# XXX accept these on commandline
+IMAGE_DIR=/dev/xendisks     # location of Xen LVM images
+ARCHIVE_DIR=/var/xen_images # where to write tarball
+
+# Check whether host was specified on commandline
+ARGS=1
+if [ $# -ne "$ARGS" ]  # Correct number of arguments passed to script?
+then
+  echo "Usage: `basename $0` hostname"
+  exit 1
+fi
+
+HOST=$1
+DATE=`date +%Y%m%d`
+ARCHIVE_NAME="${HOST}-${DATE}.tar"
+
+echo "Shutting down Xen guest '$HOST'"
+xm shutdown $HOST && sleep 10
+
+TEMP_MOUNT=`mktemp -d -p /mnt ${HOST}-XXXXX` || exit 1
+echo "Mounting image at $TEMP_MOUNT"
+mount $IMAGE_DIR/${HOST}-disk $TEMP_MOUNT
+
+echo -n "Creating archive at $ARCHIVE_DIR/$ARCHIVE_NAME ..."
+tar --create --directory $TEMP_MOUNT --file $ARCHIVE_DIR/$ARCHIVE_NAME .
+if test $? -ne 0; then
+    echo "Fail!"
+else
+    echo "Done!"
+fi
+echo "Umounting image"
+umount $TEMP_MOUNT
+rmdir $TEMP_MOUNT
+
+echo "Linking $ARCHIVE_DIR/$ARCHIVE_NAME to $ARCHIVE_DIR/$HOST.tar"
+ln -sf $ARCHIVE_DIR/$ARCHIVE_NAME $ARCHIVE_DIR/$HOST.tar

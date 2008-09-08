@@ -1,0 +1,31 @@
+<h1>New ip</h1>
+
+<% form_for(@ip) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+	<%= fields_for :network do |network|
+	@networks = Network.find(:all, :order => "name") 
+	network.collection_select(:id, @networks, :id, :name)
+	end %> 
+	
+	<%#= 
+	@networks = Network.find(:all, :order => "name") 
+	f.collection_select(:network, @networks, :id, :name) 
+	%>
+  </p>
+
+  <p>
+    <%= f.label :address %><br />
+    <%= f.text_field :address %>
+  </p>
+  <p>
+    <%= f.label :interface %><br />
+    <%= f.text_field :interface %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', ips_path %>

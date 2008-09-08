@@ -1,0 +1,32 @@
+<table cellspacing="0">
+	<caption>Networks</caption>
+  <tr>
+    <th>Name</th>
+    <th>Network address</th>
+    <th>First usable</th>
+    <th>Last usable</th>
+    <th># Used</th>
+    <th>Gateway</th>
+    <th>Netmask</th>
+    <th>Broadcast</th>
+  </tr>
+
+<% for network in @networks %>
+  <tr>
+    <td><%= link_to h(network.name), network %></td>
+    <td><%=h network.network_address %></td>
+    <td><%=h network.first_usable %></td>
+    <td><%=h network.last_usable %></td>
+    <td><%=h network.ips.count %></td>
+    <td><%=h network.gateway %></td>
+    <td><%=h network.netmask %></td>
+    <td><%=h network.broadcast %></td>
+    <td><%= link_to 'Edit', edit_network_path(network) %></td>
+    <td><%= link_to 'Destroy', network, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New network', new_network_path %>

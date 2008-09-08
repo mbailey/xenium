@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  network: 1
+  address: MyString
+  interface: 1
+
+two:
+  network: 1
+  address: MyString
+  interface: 1
