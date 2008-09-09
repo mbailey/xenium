@@ -5,9 +5,6 @@ domain.show
 domain.destroy # ajax
 domain.create  # ajax
 
-
-Domain.find(:running=true) <-- move it from Hosts
-
 Image
 - create
 
@@ -21,4 +18,6 @@ ip model
 - pull ipaddress into module 
 - add values @string and @integer to ip_address
 - investigate use of range for network model
+
+get http password from somewhere not checked into git
 
