@@ -3,7 +3,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :domains
 
-  map.resources :networks
+  map.resources :networks, :has_many => :ips
 
   map.resources :ips
 

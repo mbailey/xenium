@@ -1,5 +1,5 @@
-  <tr>
-	<td><%=h ip.address %></td>
+  <tr class="<%= cycle('odd','even') %>" >
+	<td class="name"><%=h ip.address %></td>
     <td><%=link_to h(ip.network.name), ip.network unless ip.network.blank? %></td>
     <td>
       <%=h ip.interface.slice.name unless ip.interface.blank? %> 

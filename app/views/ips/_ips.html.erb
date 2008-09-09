@@ -1,9 +1,12 @@
-<table>
+<table cellspacing="0">
 	<caption>Used IPs</caption>
 		<tr>
-		  <th>Address</th>
+		  <th class="name">Address</th>
 		  <th>Network</th>
 		  <th>Used by</th>
+		  <th></th>
+		  <th></th>
+		  <th></th>
 		</tr>
 <%= render :partial => 'ips/ip', :collection => @ips %>
 

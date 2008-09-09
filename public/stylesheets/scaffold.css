@@ -8,6 +8,40 @@ body {
 
 a { color: #77985C; }
 
+
+/* Nav tabs */
+#nav {
+	float: left;
+	width: 720px;
+	margin: 0;
+	padding: 10px 0 0 46px;
+	list-style: none;
+	background: #FFCB2D;
+}
+
+#nav a {
+	float: left;
+	display: block;
+	margin: 0;
+	padding: 4px 8px;
+	color: #333;
+	text-decoration: none;
+	border: 1px solid #9B8748;
+	border-bottom: none;
+	background: #F9E9A9;
+}
+
+#nav a:hover, body#networks #t-networks a, body#ips #t-ips a, body#hosts #t-hosts a, body#domains #t-domains a {
+	color: #333;
+	padding-bottom: 5px;
+	border-color: #727377;
+	background: #fff;
+	}
+
+
+
+/* Tables */
+
 table {
 	position: relative;
 	top: -4px;

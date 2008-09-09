@@ -1,5 +1,5 @@
-<ul>
-<% %w(networks ips hosts domains).each do |item| %>
-  <li><%= link_to_unless_current item, { :controller => item} %></li>
+<ul id="nav">
+<% %w(hosts domains networks ips).each do |item| %>
+  <li id="t-<%= item %>"><%= link_to item, "/#{item}" %></li>
 <% end %>
 </ul>

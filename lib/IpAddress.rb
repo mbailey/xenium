@@ -1,3 +1,4 @@
+# ref: http://www.prfsa.com/post.rhtml?title=ruby-ip-address-class-part-1
 class IpAddress
   include Comparable	
 

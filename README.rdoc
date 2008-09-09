@@ -1,6 +1,6 @@
 = xenium
 
-* FIX (url)
+http://github.com/mbailey/xenium
 
 == DESCRIPTION:
 

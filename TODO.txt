@@ -1,3 +1,6 @@
+How does github know about release versions for gems? Tags?
+
+
 pull in attributes from `xm list` for running domain
 domain.list    # image for running, paused and stopped
 domain.show
@@ -11,13 +14,16 @@ Image
 Config
 - 
 
-Menu - make it pretty
+# Networks
+usable IPs exclude the first and last in the network
+show: 
+ 
+# IPs
 
 paginate ips
 ip model
-- pull ipaddress into module 
+- make Network module with Ip and Network classes  
 - add values @string and @integer to ip_address
-- investigate use of range for network model
 
 get http password from somewhere not checked into git
 

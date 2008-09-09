@@ -2,9 +2,7 @@ class DomainsController < ApplicationController
   # GET /domains
   # GET /domains.xml
   def index
-    if params[:id]
-      selector = params[:id].to_sym
-    elsif params[:running] == 'true'
+    if params[:running] == 'true'
       selector = :running
     else
       selector = :all

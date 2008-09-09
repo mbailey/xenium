@@ -15,4 +15,7 @@ class Network < ActiveRecord::Base
   end
   # n.ips << Ip.new(:address=>n.next_unused_ip.string)
   
+  def remaining_ips
+    IpAddress.mask_size(netmask) - ips.count - 2
+  end
 end

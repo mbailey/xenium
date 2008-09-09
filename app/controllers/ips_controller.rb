@@ -2,7 +2,12 @@ class IpsController < ApplicationController
   # GET /ips
   # GET /ips.xml
   def index
-    @ips = Ip.find(:all)
+    # XXX extract me from this controller you swine!
+    if params[:network_id]
+      @ips = Network.find(params[:network_id]).ips
+    else
+      @ips = Ip.find(:all)
+    end
 
     respond_to do |format|
       format.html # index.html.erb
