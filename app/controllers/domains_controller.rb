@@ -1,6 +1,9 @@
 class DomainsController < ApplicationController
   # GET /domains
   # GET /domains.xml
+  
+# rescue_from badError => :do_this
+  
   def index
     if params[:running] == 'true'
       selector = :running
@@ -87,4 +90,37 @@ class DomainsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def start
+    @domain = Domain.find(params[:id])
+
+    respond_to do |format|
+      if @domain.start
+        flash[:notice] = 'Domain was started.'
+        format.html { redirect_to(@domain.name) }
+        format.xml  { head :ok }
+      else
+        format.html { render :text => "domain failed to start" }
+        format.xml  { render :xml => @domain.errors, :status => :unprocessable_entity }
+        format.js  { render :text => "domain failed to start" }
+      end
+    end
+  end
+  
+  def stop
+    @domain = Domain.find(params[:id])
+    
+    respond_to do |format|
+      if @domain.stop
+        flash[:notice] = 'Domain was stopped.'
+        format.html { redirect_to(@domain.name) }
+        format.xml  { head :ok }
+      else
+        format.html { render :text => "domain failed to stop" }
+        format.xml  { render :xml => @domain.errors, :status => :unprocessable_entity }
+        format.js  { render :text => "domain failed to stop" }
+      end
+    end
+  end
+  
 end

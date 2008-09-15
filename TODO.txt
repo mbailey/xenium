@@ -1,18 +1,20 @@
+toggle autostart on domains.list
+label :domain as :slice
+domain.list    # icons for start, stop, pause, "refresh symbol", restart
+ajax for domain_controls
+
+domain.show
+- is it set to auto start?
+	config.show
+	config.edit
+
+domain takes a little while to stop - set status to 'shutting down'
+
 How does github know about release versions for gems? Tags?
 
 
-pull in attributes from `xm list` for running domain
-domain.list    # image for running, paused and stopped
-domain.show
-- is it set to auto start?
-domain.destroy # ajax
-domain.create  # ajax
-
 Image
 - create
-
-Config
-- 
 
 # Networks
 usable IPs exclude the first and last in the network

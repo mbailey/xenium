@@ -1,7 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :hosts
 
-  map.resources :domains
+  map.resources :domains, :has_one => :config, :member => { :start => :post, :stop => :post }
 
   map.resources :networks, :has_many => :ips
 
