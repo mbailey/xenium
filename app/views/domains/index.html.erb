@@ -1,17 +1,17 @@
 <table cellspacing="0">
 	<caption>Slices</caption>
 	<tr>
-		<th scope="col"></th>
 		<th scope="col" class="name">name</th>
 		<th scope="col">memory</th>
 		<th scope="col">autostart?</th>
+		<th scope="col"></th>
 	</tr>
 	<% @domains.each do |domain| %>
 	<tr class="<%= cycle('odd','even') %>" >
-		<td id="domain_controls_<%= domain.name %>"><%= domain_control_buttons(domain) %></td>
 		<td class="name"><%= link_to domain.name, domain_path(domain.name) %><%= " (needs restart)" if domain.config_newer_than_instance? %></td>		
 		<td><%= domain.config.memory %></td>
-		<td><%= domain.config.auto ? 'on' : 'off' %></td>	
+		<td><%= domain.config.auto ? 'on' : 'off' %></td>
+		<td id="domain_controls_<%= domain.name %>"><%= domain_control_buttons(domain) %></td>	
 	</tr>
 	<% end %>
 </table>

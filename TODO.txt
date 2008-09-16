@@ -1,3 +1,14 @@
+domain.index: 
+- controller buttons should refresh themselves whenever they are reporting a pending action
+- display error if domain.start fails (not enough memory, etc)
+
+reduce number of hits on `xm`
+	Error: Domain 'gutsy' does not exist.
+	Error: Domain 'gutsy' does not exist.
+	Error: Domain 'gutsy' does not exist.
+	Error: Domain 'gutsy' does not exist.
+
+
 toggle autostart on domains.list
 label :domain as :slice
 domain.list    # icons for start, stop, pause, "refresh symbol", restart
@@ -28,4 +39,22 @@ ip model
 - add values @string and @integer to ip_address
 
 get http password from somewhere not checked into git
+
+
+
+# Investigate exception
+
+root@bb:~/xenium# ./script/console 
+Loading development environment (Rails 2.1.0)
+>> d = Domain.find(:app02)
+Errno::ENOMEM: Cannot allocate memory - xm list --long app02
+	from /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/core_ext/kernel/agnostics.rb:7:in ``'
+	from /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/core_ext/kernel/agnostics.rb:7:in ``'
+	from /usr/local/lib/ruby/gems/1.8/gems/ruby-xen-0.0.2/lib/xen/command.rb:11:in `detailed_instance_list'
+	from /usr/local/lib/ruby/gems/1.8/gems/ruby-xen-0.0.2/lib/xen/instance.rb:31:in `find_by_name'
+	from /usr/local/lib/ruby/gems/1.8/gems/ruby-xen-0.0.2/lib/xen/instance.rb:20:in `find'
+	from /usr/local/lib/ruby/gems/1.8/gems/ruby-xen-0.0.2/lib/xen/domain.rb:7:in `initialize'
+	from /usr/local/lib/ruby/gems/1.8/gems/ruby-xen-0.0.2/lib/xen/domain.rb:25:in `new'
+	from /usr/local/lib/ruby/gems/1.8/gems/ruby-xen-0.0.2/lib/xen/domain.rb:25:in `find'
+	from (irb):1
 

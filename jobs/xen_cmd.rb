@@ -10,4 +10,4 @@ require 'ruby-xen'
 # show usage info if wrong args
 # - list commands 
 command = ARGV.shift 
-Xen::Command.send(command, ARGV)
+Xen::Command.send(command, *ARGV)

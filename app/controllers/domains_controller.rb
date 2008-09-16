@@ -97,6 +97,7 @@ class DomainsController < ApplicationController
     respond_to do |format|
       if @domain.start
         flash[:notice] = 'Domain was started.'
+        format.js   { render :inline => "<%= domain_control_buttons(@domain) %>" }
         format.html { redirect_to(@domain.name) }
         format.xml  { head :ok }
       else
@@ -107,18 +108,19 @@ class DomainsController < ApplicationController
     end
   end
   
-  def stop
+  def shutdown
     @domain = Domain.find(params[:id])
     
     respond_to do |format|
-      if @domain.stop
-        flash[:notice] = 'Domain was stopped.'
+      if @domain.shutdown
+        flash[:notice] = 'Domain was shut down.'
         format.html { redirect_to(@domain.name) }
+        format.js   { render :inline => "<%= domain_control_buttons(@domain) %>" }
         format.xml  { head :ok }
       else
-        format.html { render :text => "domain failed to stop" }
+        format.html { render :text => "domain failed to shut down" }
         format.xml  { render :xml => @domain.errors, :status => :unprocessable_entity }
-        format.js  { render :text => "domain failed to stop" }
+        format.js  { render :text => "domain failed to shut down" }
       end
     end
   end
