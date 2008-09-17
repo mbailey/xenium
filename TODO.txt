@@ -1,6 +1,6 @@
-domain.index: 
+slice.index: 
 - controller buttons should refresh themselves whenever they are reporting a pending action
-- display error if domain.start fails (not enough memory, etc)
+- display error if slice.start fails (not enough memory, etc)
 
 reduce number of hits on `xm`
 	Error: Domain 'gutsy' does not exist.
@@ -9,17 +9,16 @@ reduce number of hits on `xm`
 	Error: Domain 'gutsy' does not exist.
 
 
-toggle autostart on domains.list
-label :domain as :slice
-domain.list    # icons for start, stop, pause, "refresh symbol", restart
-ajax for domain_controls
+toggle autostart on slices.list
+slice.list    # icons for start, stop, pause, "refresh symbol", restart
+ajax for slice_controls
 
-domain.show
+slice.show
 - is it set to auto start?
 	config.show
 	config.edit
 
-domain takes a little while to stop - set status to 'shutting down'
+slice takes a little while to stop - set status to 'shutting down'
 
 How does github know about release versions for gems? Tags?
 

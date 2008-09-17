@@ -1,7 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :hosts
 
-  map.resources :domains, :has_one => :config, :member => { :start => :post, :shutdown => :post }
+  map.resources :slices, :has_one => :config, :member => { :start => :post, :shutdown => :post }
 
   map.resources :networks, :has_many => :ips
 
@@ -39,7 +39,7 @@ ActionController::Routing::Routes.draw do |map|
   #   end
 
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
-  map.root :controller => "domains"
+  map.root :controller => "slices"
 
   # See how all your routes lay out with "rake routes"
 

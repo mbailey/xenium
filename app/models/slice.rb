@@ -1,4 +1,4 @@
-class Domain < Xen::Domain
+class Slice < Xen::Slice
   
   XEN_CMD_RUNNER = '/usr/local/bin/ruby jobs/xen_cmd.rb' # XXX don't hard code path
   

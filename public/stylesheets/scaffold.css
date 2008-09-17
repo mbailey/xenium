@@ -31,7 +31,7 @@ a { color: #77985C; }
 	background: #F9E9A9;
 }
 
-#nav a:hover, body#networks #t-networks a, body#ips #t-ips a, body#hosts #t-hosts a, body#domains #t-domains a {
+#nav a:hover, body#networks #t-networks a, body#ips #t-ips a, body#hosts #t-hosts a, body#slices #t-slices a {
 	color: #333;
 	padding-bottom: 5px;
 	border-color: #727377;

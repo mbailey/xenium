@@ -1,0 +1,17 @@
+<table cellspacing="0">
+	<caption>Slices</caption>
+	<tr>
+		<th scope="col" class="name">name</th>
+		<th scope="col">memory</th>
+		<th scope="col">autostart?</th>
+		<th scope="col"></th>
+	</tr>
+	<% @slices.each do |slice| %>
+	<tr class="<%= cycle('odd','even') %>" >
+		<td class="name"><%= link_to slice.name, slice_path(slice.name) %><%= " (needs restart)" if slice.config_newer_than_instance? %></td>		
+		<td><%= slice.config.memory %></td>
+		<td><%= slice.config.auto ? 'on' : 'off' %></td>
+		<td id="slice_controls_<%= slice.name %>"><%= slice_control_buttons(slice) %></td>	
+	</tr>
+	<% end %>
+</table>
