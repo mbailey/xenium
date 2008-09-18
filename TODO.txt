@@ -1,27 +1,21 @@
+slice.create
+slice.destroy
+
+Add specs
+
 slice.index: 
 - controller buttons should refresh themselves whenever they are reporting a pending action
 - display error if slice.start fails (not enough memory, etc)
-
-reduce number of hits on `xm`
-	Error: Domain 'gutsy' does not exist.
-	Error: Domain 'gutsy' does not exist.
-	Error: Domain 'gutsy' does not exist.
-	Error: Domain 'gutsy' does not exist.
-
 
 toggle autostart on slices.list
 slice.list    # icons for start, stop, pause, "refresh symbol", restart
 ajax for slice_controls
 
 slice.show
-- is it set to auto start?
 	config.show
 	config.edit
 
-slice takes a little while to stop - set status to 'shutting down'
-
 How does github know about release versions for gems? Tags?
-
 
 Image
 - create
@@ -41,7 +35,7 @@ get http password from somewhere not checked into git
 
 
 
-# Investigate exception
+# Investigate exception - seems to occur when webrick and console in use
 
 root@bb:~/xenium# ./script/console 
 Loading development environment (Rails 2.1.0)
