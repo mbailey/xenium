@@ -1,39 +1,14 @@
-<%= @network.next_unused_ip %>
-
-<p>
-  <b>Name:</b>
-  <%=h @network.name %>
-</p>
-
-<p>
-  <b>Network address:</b>
-  <%=h @network.network_address %>
-</p>
-
-<p>
-  <b>First usable:</b>
-  <%=h @network.first_usable %>
-</p>
-
-<p>
-  <b>Last usable:</b>
-  <%=h @network.last_usable %>
-</p>
-
-<p>
-  <b>Gateway:</b>
-  <%=h @network.gateway %>
-</p>
-
-<p>
-  <b>Netmask:</b>
-  <%=h @network.netmask %>
-</p>
-
-<p>
-  <b>Broadcast:</b>
-  <%=h @network.broadcast %>
-</p>
+<table cellspacing="0">
+  <caption>Network:<%= @network.name %></caption>
+  <%= @network.next_unused_ip %>??
+		<tr><th scope="row" class="name">Name</th><td>  <%=h @network.name %></td></tr>
+		<tr><th scope="row" class="name">Network address</th><td><%=h @network.network_address %></td></tr>
+		<tr><th scope="row" class="name">First usable</th><td> <%=h @network.first_usable %></td></tr>
+		<tr><th scope="row" class="name">Last usable:</th><td><%=h @network.last_usable %></td></tr>
+		<tr><th scope="row" class="name">Gateway</th><td><%=h @network.gateway %></td></tr>
+		<tr><th scope="row" class="name">Netmask</th><td><%=h @network.netmask %></td></tr>
+		<tr><th scope="row" class="name">Broadcast</th><td><%=h @network.broadcast %></td></tr>
+	</table>
 
 <%= render :partial => 'ips/ips' %>
 <%= link_to 'Edit', edit_network_path(@network) %> |
