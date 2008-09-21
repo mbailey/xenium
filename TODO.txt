@@ -1,5 +1,10 @@
 slice.create
+- generate list of backups/debootstrap to install from
 slice.destroy
+
+how will we make slice.to_xml work?
+
+dom0 is not really a slice
 
 Add specs
 

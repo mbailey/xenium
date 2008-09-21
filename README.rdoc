@@ -17,12 +17,17 @@ use of the ruby-xen library to interact with Xend.
 
 == REQUIREMENTS:
 
-ruby-xen
+ruby-xen  (http://github.com/mbailey/ruby-xen)
 xen-tools (http://www.xen-tools.org/software/xen-tools/)
 
 == INSTALL:
 
-FIX
+# Install Xenium
+git clone http://github.com/mbailey/xenium
+rake gems:install
+rake db:migrate
+./script/server
+
 
 == LICENSE:
 

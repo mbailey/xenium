@@ -11,7 +11,18 @@
 		<tr><th class="name">mac</th><td><%#= vif.mac %></td-->
 	<%# end %>
 	</tr>
-	<td>    
+	<tr>
+		<th>Backups</th>
+		<td>
+			<ul>
+			<% @slice.backups.each do |backup| %>
+			<li><%= backup.version %></li>
+			<% end %>
+			</ul>
+		</td>
+	</tr>   
 </table>
+
+	
 <%= link_to 'Edit', edit_slice_path(@slice) %> |
 <%= link_to 'Back', slices_path %>
