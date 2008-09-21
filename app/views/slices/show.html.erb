@@ -1,7 +1,9 @@
 <table>
-	<caption><%= @slice.name %> <%= link_to 'edit', edit_slice_config_path(@slice.name) %> <span id="slice_controls_<%= @slice.name %>"><%= slice_control_buttons(@slice) %></span></caption>
-	<tr><th class="name">memory</th><td><%= @slice.config.memory %></td><tr>
-	<tr><th class="name">autostart?</th><td><%= @slice.config.auto ? 'on' : 'off' %></td><tr>
+	<caption><%= @slice.name %> <%= link_to 'edit', edit_slice_config_path(@slice.name) %> </caption>
+	<tr><th class="name">status</th><td><span id="slice_controls_<%= @slice.name %>">
+	<%= slice_control_buttons(@slice) %></span></td></tr>
+	<tr><th class="name">memory</th><td><%= @slice.config.memory %></td></tr>
+	<tr><th class="name">autostart?</th><td><%= @slice.config.auto ? 'on' : 'off' %></td></tr>
 		
 	<%# @slice.config.vifs.each_with_index do |vif, index| %>
 		<!--tr><th colspan="2" class="name">eth<%#= index %></th></tr>

@@ -3,11 +3,14 @@ body {
 	padding: 30px;
 	font-family: "Lucida Grande", Arial, sans-serif;
 	font-size: small;
-	background-color: #b5b5b5;
+	background-color: #ECF1EF;
 	}
 
 a { color: #77985C; }
 
+#header {
+   height: 4.3em;
+}
 
 /* Nav tabs */
 #nav {
@@ -16,25 +19,26 @@ a { color: #77985C; }
 	margin: 0;
 	padding: 10px 0 0 46px;
 	list-style: none;
-	background: #FFCB2D;
+	background: #330033;
 }
 
 #nav a {
 	float: left;
 	display: block;
-	margin: 0;
-	padding: 4px 8px;
-	color: #333;
+	margin: -1px;
+	padding: 4px 9px 10px 8px;
+	color: #330033;
+	font-size: 120%;
 	text-decoration: none;
-	border: 1px solid #9B8748;
+	border: 1px solid #663366;
 	border-bottom: none;
-	background: #F9E9A9;
+	background: #CC99FF;
 }
 
 #nav a:hover, body#networks #t-networks a, body#ips #t-ips a, body#hosts #t-hosts a, body#slices #t-slices a {
-	color: #333;
-	padding-bottom: 5px;
-	border-color: #727377;
+	color: #330033;
+	padding-bottom:10px;
+	border-color: #663366;
 	background: #fff;
 	}
 
@@ -47,8 +51,11 @@ table {
 	top: -4px;
 	left: -4px;
 	width: 100%;
-	border: 1px solid #000;
 	background: #fff;
+	border-right: 2px solid #EBECE4;
+	border-bottom: 4px solid #EBECE4;
+	
+	
 }
 
 table th, table td {
@@ -61,30 +68,68 @@ table th, table td {
 table th {
 	color: #999;
 }
-
 table .name {
 	text-align: left;
 }
+table tr {
+    border: none;
+}
 
 table tr.odd {
-	background: #e6e6e6;
+	background: #fff;
 }
 
 table tr.even {
-	background: #f1f1f1;
+	background: #F6F9ED;
+}
+table tr.dark th{
+	background: #333;
+	color: #ECF1EF;
 }
 
 table caption {
 	margin: 0;
-	padding: 8px 20px;
+	padding: 1em;
 	text-align: left;
-	border: 1px solid #000;
-	border-bottom: none;
+	border-right: 2px solid #EBECE4;
 	background: #fff;
+    font-size: 2em; 
+}
+table caption a {
+	font-size: small;
+}
+	
 }
 
 .table_shadow {
 	background: #919191;
+}
+
+/*forms*/
+
+form {
+    float: left;
+}
+
+form label{
+	float:left;
+	font-weight: bold;
+}
+form input {
+	border: 1px solid #D1D1D1;
+	padding: .2em;
+	font-size: 120%;
+}
+form input#network_submit, input#ip_submit {
+	float: left;
+}
+form span {
+	color: #999;
+}
+form fieldset {
+	border: none;
+	border-top: 1px solid #999;
+	padding: 0 6em 4em 2em;
 }
 
 /* rails default */
