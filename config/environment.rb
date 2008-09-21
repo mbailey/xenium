@@ -67,3 +67,5 @@ Rails::Initializer.run do |config|
   # Activate observers that should always be running
   # config.active_record.observers = :cacher, :garbage_collector
 end
+MEMORY_OPTIONS = [256, 512, 1024, 2048]
+DISK_OPTIONS = [1, 2, 5, 10, 20, 50, 100]

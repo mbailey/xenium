@@ -1,8 +1,24 @@
-<h1>New slice</h1>
+<% unless @errors.blank? %>
+	<ul>
+		<% for error in @errors %>
+			<li><p><%= h(error) %></p></li>
+		<% end %>
+	</ul>
+<% end %>
 
-<% form_for(@slice) do |f| %>
-  <%= f.error_messages %>
-
+<% form_for :slice, :url => { :action => :create } do |f| %>
+<br style="clear: left"/>
+	<fieldset>
+		Name <%= text_field_tag :name %><br />
+		System Image <%= select_tag(:image, options_for_select(['gutsy', 'hardy'])) %><br />
+	Memory <%= select_tag(:memory, options_for_select(MEMORY_OPTIONS, 512)) %>
+	</fieldset>
+	<fieldset>
+		<legend>Disk</legend>
+		Root <%= select_tag(:size, options_for_select(DISK_OPTIONS, 10)) %>
+		Swap <%= text_field_tag :swap %>
+		
+	</fieldset>
   <p>
     <%= f.submit "Create" %>
   </p>

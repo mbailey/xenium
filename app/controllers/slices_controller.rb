@@ -32,7 +32,7 @@ class SlicesController < ApplicationController
   # GET /slices/new
   # GET /slices/new.xml
   def new
-    @slice = Slice.new
+    @slice = {} # Slice.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -48,18 +48,19 @@ class SlicesController < ApplicationController
   # POST /slices
   # POST /slices.xml
   def create
-    @slice = Slice.new(params[:slice])
+    render :text => params.inspect
+    # @slice = Slice.new(params[:slice])
 
-    respond_to do |format|
-      if @slice.save
-        flash[:notice] = 'Slice was successfully created.'
-        format.html { redirect_to(@slice) }
-        format.xml  { render :xml => @slice, :status => :created, :location => @slice }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @slice.errors, :status => :unprocessable_entity }
-      end
-    end
+    # respond_to do |format|
+    #   if @slice.save
+    #     flash[:notice] = 'Slice was successfully created.'
+    #     format.html { redirect_to(@slice) }
+    #     format.xml  { render :xml => @slice, :status => :created, :location => @slice }
+    #   else
+    #     format.html { render :action => "new" }
+    #     format.xml  { render :xml => @slice.errors, :status => :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PUT /slices/1

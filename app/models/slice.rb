@@ -6,6 +6,10 @@ class Slice < Xen::Slice
     Bj.submit "#{XEN_CMD_RUNNER} shutdown_instance #{name} true", :tag => "#{name}.shutdown_instance"
   end
   
+  def create
+    Bj.submit "#{XEN_CMD_RUNNER} create_image --hostname=#{name}", :tag => "#{name}.create_image"
+  end
+  
   def shutting_down?
     # XXX What happens if bj fails and we get a whole lot of pending requests?
     # XXX Perhaps run a sweeper under cron to clean them up.
