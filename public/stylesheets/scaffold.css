@@ -120,7 +120,7 @@ form input {
 	padding: .2em;
 	font-size: 120%;
 }
-form input#network_submit {
+form input#network_submit, input#ip_submit {
 	float: left;
 }
 form span {
