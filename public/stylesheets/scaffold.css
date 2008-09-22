@@ -50,6 +50,7 @@ table {
 	position: relative;
 	top: -4px;
 	left: -4px;
+	float: left; /*safari fix*/
 	width: 100%;
 	background: #fff;
 	border-right: 2px solid #EBECE4;
