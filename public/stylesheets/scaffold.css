@@ -15,11 +15,15 @@ a { color: #77985C; }
 /* Nav tabs */
 #nav {
 	float: left;
-	width: 720px;
+	width: 90%;
 	margin: 0;
 	padding: 10px 0 0 46px;
 	list-style: none;
 	background: #330033;
+	background-image: url('/images/bg.png');
+	background-position: right;
+	background-repeat: no-repeat;
+	
 }
 
 #nav a {
@@ -104,6 +108,10 @@ table caption a {
 
 .table_shadow {
 	background: #919191;
+}
+
+tfoot td{
+    border-bottom: none;
 }
 
 /*forms*/
