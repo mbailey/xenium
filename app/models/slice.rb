@@ -2,12 +2,18 @@ class Slice < Xen::Slice
   
   XEN_CMD_RUNNER = '/usr/local/bin/ruby jobs/xen_cmd.rb' # XXX don't hard code path
   
+  # XXX Perhaps DRY this up by extracting commonality
   def shutdown
     Bj.submit "#{XEN_CMD_RUNNER} shutdown_instance #{name} true", :tag => "#{name}.shutdown_instance"
   end
   
   def create
     Bj.submit "#{XEN_CMD_RUNNER} create_image --hostname=#{name}", :tag => "#{name}.create_image"
+  end
+  
+  def create_backup(version=nil)
+    version ||= Time.now.strftime('%Y%m%d')
+    Bj.submit "#{XEN_CMD_RUNNER} backup_slice #{name} #{version} :blocking", :tag => "#{name}.backup_slice"
   end
   
   def shutting_down?
@@ -22,6 +28,11 @@ class Slice < Xen::Slice
     Bj.table.job.find(:first, :conditions => "tag = '#{name}.create' and state in ('running', 'pending')")
   end
   
+  # not working yet
+  def backing_up_slice?
+    Bj.table.job.find(:first, :conditions => "tag = '#{name}.backup_slice' and state in ('running', 'pending')")
+  end
+  
   alias _state state
   def state
     if _state == :running
@@ -29,6 +40,13 @@ class Slice < Xen::Slice
     else
       return pending_creation? ? :pending_creation : :stopped
     end
+  end
+  
+  alias _backups backups
+  def backups
+    list = _backups
+    list << Xen::Backup.new("new backup") if backing_up_slice?
+    list
   end
   
   def running?

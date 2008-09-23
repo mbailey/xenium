@@ -49,7 +49,8 @@ class SlicesController < ApplicationController
   # POST /slices.xml
   def create
     render :text => params.inspect
-    # @slice = Slice.new(params[:slice])
+        
+    @slice = Slice.new(params[:slice])
 
     # respond_to do |format|
     #   if @slice.save
@@ -123,6 +124,34 @@ class SlicesController < ApplicationController
         format.xml  { render :xml => @slice.errors, :status => :unprocessable_entity }
         format.js  { render :text => "slice failed to shut down" }
       end
+    end
+  end
+  
+  def toggle_autostart
+    @slice = Slice.find(params[:id])
+    action = @slice.config.auto? ? 'disable' : 'enable'
+    respond_to do |format|
+      if @slice.config.set_auto !@slice.config.auto
+        flash[:notice] = "Slice autostart #{action}d."
+        format.js   { render :inline => "<%= slice_toggle_autostart(@slice) %>" }
+        format.html { redirect_to(@slice.name) }
+        format.xml  { head :ok }
+      else
+        format.html { render :text => "Failed to #{action} slice autostart" }
+        format.xml  { render :xml => @slice.errors, :status => :unprocessable_entity }
+        format.js  { render :text => "Failed to #{action} slice autostart" }
+      end
+    end
+  end
+  
+  # XXX move to backups controller?
+  def create_backup
+    @slice = Slice.find(params[:id])
+    @slice.create_backup
+
+    respond_to do |format|
+      format.html { redirect_to(@slice.name)}
+      format.xml  { render :xml => @backups }
     end
   end
   

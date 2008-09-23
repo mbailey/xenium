@@ -14,7 +14,7 @@
 	<%# end %>
 	</tr>
 	<tr>
-		<th>Backups</th>
+		<th class="name">Backups (<%= link_to 'create new backup', create_backup_slice_path(@slice.name), :method => :post %>)</th>
 		<td>
 			<ul>
 			<% @slice.backups.each do |backup| %>
@@ -24,7 +24,3 @@
 		</td>
 	</tr>   
 </table>
-
-	
-<%= link_to 'Edit', edit_slice_path(@slice) %> |
-<%= link_to 'Back', slices_path %>

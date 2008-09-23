@@ -4,12 +4,21 @@ module ApplicationHelper
     result = []
     if slice.state == :running 
       result << 'start'
-      result << link_to_remote('shutdown', :url => shutdown_slice_path(slice.name), :method => :post, :confirm => 'Are you sure?', :update => "slice_controls_#{slice.name}")
+      result << link_to_remote('shutdown', :url => shutdown_slice_path(slice.name), :method => :put, :confirm => 'Are you sure?', :update => "slice_controls_#{slice.name}")
     elsif slice.state == :stopped
-      result << link_to_remote('start', :url => start_slice_path(slice.name),  :method => :post, :update => "slice_controls_#{slice.name}")
+      result << link_to_remote('start', :url => start_slice_path(slice.name),  :method => :put, :update => "slice_controls_#{slice.name}")
       result << 'shutdown'
     end
     "#{slice.state.to_s} [#{result.join ' | '}]"
+  end
+  
+  def slice_toggle_autostart(slice)
+    result = []
+    if slice.config.auto? 
+      result << link_to_remote('yes', :url => toggle_autostart_slice_path(slice.name), :method => :put, :update => "slice_toggle_autostart_#{slice.name}")
+    else
+      result << link_to_remote('no', :url => toggle_autostart_slice_path(slice.name),  :method => :put, :update => "slice_toggle_autostart_#{slice.name}")
+    end
   end
     
 end

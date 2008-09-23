@@ -1,4 +1,4 @@
-= xenium
+= xenium (born sep 2008 - still immature!)
 
 http://github.com/mbailey/xenium
 
@@ -9,7 +9,9 @@ use of the ruby-xen library to interact with Xend.
 
 == FEATURES/PROBLEMS:
 
-* FIX (list of features or problems)
+* Xenium makes use of Ara Howard's BackgroundJob gem to process tasks that
+  would otherwise leave your browser hanging (like creating or backing up a 
+  slice).
 
 == SYNOPSIS:
 

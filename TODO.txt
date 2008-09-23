@@ -1,3 +1,8 @@
+backups - indicate when backup is not ready yet
+* find out why bj is stopping
+
+* list vg's (space free)
+
 slice.create
 - generate list of backups/debootstrap to install from
 slice.destroy

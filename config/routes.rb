@@ -1,7 +1,13 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :hosts
 
-  map.resources :slices, :has_one => :config, :member => { :start => :post, :shutdown => :post }
+  map.resources :slices, 
+    :has_one => :config, 
+    :member => { 
+      :toggle_autostart => :put, 
+      :start => :put, 
+      :shutdown => :put,
+      :create_backup => :post }
 
   map.resources :networks, :has_many => :ips
 
