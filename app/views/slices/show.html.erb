@@ -1,5 +1,8 @@
 <table>
-	<caption><%= @slice.name %> <%= link_to 'edit', edit_slice_config_file_path(@slice.name) %> </caption>
+    <thead>
+	<caption><%= @slice.name %> </caption>
+	</thead>
+	<tbody>
 	<tr><th class="name">status</th><td><span id="slice_controls_<%= @slice.name %>">
 	<%= slice_control_buttons(@slice) %></span></td></tr>
 	<tr><th class="name">memory</th><td><%= @slice.config_file.memory %></td></tr>
@@ -12,15 +15,13 @@
 		<tr><th class="name">ip</th><td><%#= vif.ip %></td>
 		<tr><th class="name">mac</th><td><%#= vif.mac %></td-->
 	<%# end %>
-	</tr>
-	<tr>
-		<th class="name">Backups (<%= link_to 'create new backup', create_backup_slice_path(@slice.name), :method => :post %>)</th>
-		<td>
-			<ul>
-			<% @slice.backups.each do |backup| %>
-			<li><%= backup.version %></li>
-			<% end %>
-			</ul>
-		</td>
-	</tr>   
+
+    </tbody>
+	<tfoot>
+	<tr><td></td></td><td></td><td></td><td>
+	<%= link_to image_tag('/images/Edit.png', :alt => "Edit Slice", :title => "Edit Slice"), edit_slice_config_path(@slice.name) %>
+	</tr></td>
+	</tfoot>
+	   
 </table>
+

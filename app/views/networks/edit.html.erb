@@ -1,40 +1,47 @@
-<h1>Editing network</h1>
+<table>
+  <caption>Edit Network</caption>
+  <tr>
+    <td>
+	<% form_for(@network) do |f| %>
+	  <%= f.error_messages %>
+        <fieldset>
+          <p>
+	        <%= f.label :name %><br />
+	        <%= f.text_field :name %>
+          </p>
+            <%= f.label :network_address %><br />
+		    <%= f.text_field :network_address %>
+          <p>
+            <%= f.label :first_usable %><br />
+	        <%= f.text_field :first_usable %>
+          </p>
+          <p>
+            <%= f.label :last_usable %><br />
+            <%= f.text_field :last_usable %>
+          </p>
+          <p>
+            <%= f.label :gateway %><br />
+            <%= f.text_field :gateway %>
+          </p>
+          <p>
+            <%= f.label :netmask %><br />
+            <%= f.text_field :netmask %>
+          </p>
+          <p>
+            <%= f.label :broadcast %><br />
+            <%= f.text_field :broadcast %>
+          </p>
+          <p>
+            <%= f.submit "Update" %>
+          </p>
+        </fieldset>
+      <% end %>
+	</td>
+  </tr>
+</table>
 
-<% form_for(@network) do |f| %>
-  <%= f.error_messages %>
 
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :network_address %><br />
-    <%= f.text_field :network_address %>
-  </p>
-  <p>
-    <%= f.label :first_usable %><br />
-    <%= f.text_field :first_usable %>
-  </p>
-  <p>
-    <%= f.label :last_usable %><br />
-    <%= f.text_field :last_usable %>
-  </p>
-  <p>
-    <%= f.label :gateway %><br />
-    <%= f.text_field :gateway %>
-  </p>
-  <p>
-    <%= f.label :netmask %><br />
-    <%= f.text_field :netmask %>
-  </p>
-  <p>
-    <%= f.label :broadcast %><br />
-    <%= f.text_field :broadcast %>
-  </p>
-  <p>
-    <%= f.submit "Update" %>
-  </p>
-<% end %>
 
-<%= link_to 'Show', @network %> |
-<%= link_to 'Back', networks_path %>
+
+
+

@@ -6,8 +6,9 @@ body {
 	background-color: #ECF1EF;
 	}
 
-a { color: #77985C; }
-
+table a { color: #698B22; font-size: 110%; }
+img {border: 0;}
+/*#77985C*/
 #header {
    height: 4.3em;
 }
@@ -59,6 +60,7 @@ table {
 	background: #fff;
 	border-right: 2px solid #EBECE4;
 	border-bottom: 4px solid #EBECE4;
+	margin: 0 0 2.4em 0;
 	
 	
 }
@@ -110,8 +112,24 @@ table caption a {
 	background: #919191;
 }
 
-tfoot td{
+table td.actions {
+	background-color: #F7F7F7;
+}
+
+tfoot td {
     border-bottom: none;
+	/*background-color: #F7F7F7;*/
+
+}
+
+span.shadow {
+	background-color: #F7F7F7;
+	
+}
+
+tfoot img {
+	float: right;
+	padding:.4em 2em 0em 0 ;
 }
 
 /*forms*/
@@ -139,6 +157,20 @@ form fieldset {
 	border: none;
 	border-top: 1px solid #999;
 	padding: 0 6em 4em 2em;
+}
+
+#menu {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 2em;
+	z-index: 99;
+	background-image: url('/images/transparent_bg.png');
+	padding: .6em 0 0 1.1em;
+	border-top:1px dotted #999;
+	border-bottom:5px solid #333;
+  
 }
 
 /* rails default */
