@@ -29,8 +29,8 @@ class Slice < Xen::Slice
   end
   
   # not working yet
-  def backing_up_slice?
-    Bj.table.job.find(:first, :conditions => "tag = '#{name}.backup_slice' and state in ('running', 'pending')")
+  def backup_pending?
+    Bj.table.job.find(:first, :conditions => "tag = '#{name}.backup_slice' and state in ('pending')")
   end
   
   alias _state state
@@ -45,7 +45,7 @@ class Slice < Xen::Slice
   alias _backups backups
   def backups
     list = _backups
-    list << Xen::Backup.new("new backup") if backing_up_slice?
+    list << Xen::Backup.new(name, :version => "pending") if backup_pending?
     list
   end
   
