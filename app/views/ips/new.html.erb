@@ -1,19 +1,16 @@
 <table>
-  <caption>New ip</caption>
+  <caption>Mark IP as used</caption>
   <tr>
     <td>
       <% form_for(@ip) do |f| %>
       <%= f.error_messages %>
         <fieldset>
            <p>
+		   <%= f.label :network %><br />
 		   <%= fields_for :network do |network|
-	       @networks = Network.find(:all, :order => "name") 
-	       network.collection_select(:id, @networks, :id, :name)
+	       @networks = Network.find(:all, :order => "name").map {|u| ["#{u.name}: #{u.network_address}/#{u.netmask}" , u.id] }
+	       f.select(:id, @networks)
 	       end %> 
-	<%#= 
-	@networks = Network.find(:all, :order => "name") 
-	f.collection_select(:network, @networks, :id, :name) 
-	%>
            </p>
   		   <p>
             <%= f.label :address %><br />
@@ -31,4 +28,3 @@
     </td>
   </tr>
 </table>
-<%= link_to 'Back', ips_path %>

@@ -1,6 +1,7 @@
 <table cellspacing="0">
 	<caption>Used IPs</caption>
-		<tr class="dark">
+	<thead>
+		<tr>
 		  <th class="name">Address</th>
 		  <th>Network</th>
 		  <th>Used by</th>
@@ -8,6 +9,12 @@
 		  <th></th>
 		  <th></th>
 		</tr>
+	</thead>
 <%= render :partial => 'ips/ip', :collection => @ips %>
-
+	<tfoot>
+		<tr>
+			<td><%= link_to image_tag('/images/plusbutton.png', :alt => "Mark IP as used", :title => "Mark IP as used"), new_network_ip_path(network.id) %></td>
+			<td colspan="5"></td>
+		</tr>
+	</tfoot>
 </table>

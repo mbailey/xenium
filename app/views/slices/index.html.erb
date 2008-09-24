@@ -1,12 +1,14 @@
 <table cellspacing="0">
 	<caption>Slices</caption>
-	<tr class="dark">
-		<th scope="col" class="name">name</th>
-		<th scope="col">memory</th>
-		<th scope="col">backup exists?</th>
-		<th scope="col">autostart?</th>
-		<th scope="col"></th>
-	</tr>
+	<thead>
+		<tr>
+			<th scope="col" class="name">name</th>
+			<th scope="col">memory</th>
+			<th scope="col">backup exists?</th>
+			<th scope="col">autostart?</th>
+			<th scope="col"></th>
+		</tr>
+	</thead>
 	<% @slices.each do |slice| %>
 	<tr class="<%= cycle('odd','even') %>" >
 		<td class="name"><%= link_to slice.name, slice_path(slice.name) %><%= " (needs restart)" if slice.config_file_newer_than_instance? %></td>
@@ -15,8 +17,12 @@
 		<td id="slice_toggle_autostart_<%= slice.name %>"><%= slice_toggle_autostart(slice) %></td>
 		<td id="slice_controls_<%= slice.name %>"><%= slice_control_buttons(slice) %></td>	
 	</tr>
+
 	<% end %>
-	<div id ="menu">
-	  <%= link_to image_tag('/images/plusbutton.png', :alt => "New Slice", :title => "New Slice"), new_slice_path %>
-	</div>
+	<tfoot>
+		<tr>
+			<th class="name"><%= link_to image_tag('/images/plusbutton.png', :alt => "New Slice", :title => "New Slice"), new_slice_path %></th>
+			<th colspan="6">
+		</tr>
+	</tfoot>
 </table>

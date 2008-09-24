@@ -2,8 +2,8 @@
 	<td class="name"><%=h ip.address %></td>
     <td><%=link_to h(ip.network.name), ip.network unless ip.network.blank? %></td>
     <td>
-      <%=h ip.interface.slice.name unless ip.interface.blank? %> 
-	  <%=h ip.interface.name unless ip.interface.blank? %>
+      <%#=h ip.interface.slice.name unless ip.interface.blank? %> 
+	  <%#=h ip.interface.name unless ip.interface.blank? %>
 	</td>
     <td><%= link_to 'Show', ip %></td>
     <td><%= link_to 'Edit', edit_ip_path(ip) %></td>

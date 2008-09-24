@@ -1,5 +1,5 @@
-<table cellspacing="0">
-  <caption>Network:<%= @network.name %></caption>
+<table cellspacing="0" class="show_table">
+  <caption>Network:<%= @network.name %> <%= link_to image_tag('/images/Edit.png', :alt => "Edit", :title => "Edit"), edit_network_path(@network) %></caption>
 	<thead></thead>
 	  <tbody>
 		<tr>
@@ -28,19 +28,11 @@
 		    <td><%= @network.next_unused_ip %></td>
 		</tr>
 		</tbody>
-		<tfoot>
-		<tr><td></td></td><td></td><td></td><td>
-		<%= link_to image_tag('/images/Edit.png', :alt => "Edit", :title => "Edit"), edit_network_path(@network) %>
-		</tr></td>
-		</tfoot>
+
 	</table>
 
-<%= render :partial => 'ips/ips' %>
+<%= render :partial => 'ips/ips', :locals => { :network => @network} %>
 
-	
-	<div id ="menu">
-	  <%= link_to image_tag('/images/plusbutton.png', :alt => "New Network", :title => "New Network"), new_network_path %>
-	</div>
 
 
 
