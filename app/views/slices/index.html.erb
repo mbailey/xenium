@@ -14,4 +14,7 @@
 		<td id="slice_controls_<%= slice.name %>"><%= slice_control_buttons(slice) %></td>	
 	</tr>
 	<% end %>
+	<div id ="menu">
+	  <%= link_to image_tag('/images/plusbutton.png', :alt => "New Slice", :title => "New Slice"), new_slice_path %>
+	</div>
 </table>

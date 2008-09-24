@@ -1,5 +1,8 @@
 <table>
-	<caption><%= @slice.name %> <%= link_to 'edit', edit_slice_config_path(@slice.name) %> </caption>
+    <thead>
+	<caption><%= @slice.name %> </caption>
+	</thead>
+	<tbody>
 	<tr><th class="name">status</th><td><span id="slice_controls_<%= @slice.name %>">
 	<%= slice_control_buttons(@slice) %></span></td></tr>
 	<tr><th class="name">memory</th><td><%= @slice.config.memory %></td></tr>
@@ -12,7 +15,12 @@
 		<tr><th class="name">ip</th><td><%#= vif.ip %></td>
 		<tr><th class="name">mac</th><td><%#= vif.mac %></td-->
 	<%# end %>
+    </tbody>
+	<tfoot>
+	<tr><td></td></td><td></td><td></td><td>
+	<%= link_to image_tag('/images/Edit.png', :alt => "Edit Slice", :title => "Edit Slice"), edit_slice_config_path(@slice.name) %>
+	</tr></td>
+	</tfoot>
 	   
 </table>
-<%= link_to 'Edit', edit_slice_path(@slice) %> |
-<%= link_to 'Back', slices_path %>
+

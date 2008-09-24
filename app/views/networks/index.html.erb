@@ -1,5 +1,6 @@
 <table cellspacing="0">
 	<caption>Networks</caption>
+	<thead>
   <tr class="dark">
     <th>Name</th>
     <th>Network address</th>
@@ -9,20 +10,28 @@
     <th></th>
     <th></th>
   </tr>
+    </thead>
 
 <% for network in @networks %>
+  <tbody>
   <tr>
     <td><%= link_to h(network.name), network_path(network) %></td>
     <td><%=h network.network_address %></td>
     <td><%=h network.netmask %></td>
     <td><%=link_to h(network.ips.count), network_ips_path(network) %></td>
     <td><%=h network.remaining_ips %></td>
-    <td><%= link_to 'Edit', edit_network_path(network) %></td>
-    <td><%= link_to 'Destroy', network, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td class="actions"><%= link_to image_tag('/images/Edit.png', :alt => "Edit", :title => "Edit"), edit_network_path(network) %></td>
+    <td class="actions"><%= link_to image_tag('/images/destroy.png', :alt => "Destroy", :title => "Destroy"), network, :confirm => "Are you sure you want to delete network #{network.name}?", :method => :delete %></td>
+
   </tr>
+    </tbody>
 <% end %>
-</table>
+	<tfoot><tr><td>  
+	</td></tr></tfoot>
+	
+	<div id ="menu">
+	  <%= link_to image_tag('/images/plusbutton.png', :alt => "New Network", :title => "New Network"), new_network_path %>
+	</div>
 
-<br />
 
-<%= link_to 'New network', new_network_path %>
+
