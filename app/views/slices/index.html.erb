@@ -9,8 +9,8 @@
 	</tr>
 	<% @slices.each do |slice| %>
 	<tr class="<%= cycle('odd','even') %>" >
-		<td class="name"><%= link_to slice.name, slice_path(slice.name) %><%= " (needs restart)" if slice.config_newer_than_instance? %></td>
-		<td><%= slice.config.memory %></td>
+		<td class="name"><%= link_to slice.name, slice_path(slice.name) %><%= " (needs restart)" if slice.config_file_newer_than_instance? %></td>
+		<td><%= slice.config_file.memory %></td>
 		<td><%= slice.backups.empty? ? '' : 'yes' %></td>
 		<td id="slice_toggle_autostart_<%= slice.name %>"><%= slice_toggle_autostart(slice) %></td>
 		<td id="slice_controls_<%= slice.name %>"><%= slice_control_buttons(slice) %></td>	

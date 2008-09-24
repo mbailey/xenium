@@ -129,9 +129,9 @@ class SlicesController < ApplicationController
   
   def toggle_autostart
     @slice = Slice.find(params[:id])
-    action = @slice.config.auto? ? 'disable' : 'enable'
+    action = @slice.config_file.auto? ? 'disable' : 'enable'
     respond_to do |format|
-      if @slice.config.set_auto !@slice.config.auto
+      if @slice.config_file.set_auto !@slice.config_file.auto
         flash[:notice] = "Slice autostart #{action}d."
         format.js   { render :inline => "<%= slice_toggle_autostart(@slice) %>" }
         format.html { redirect_to(@slice.name) }
@@ -150,7 +150,7 @@ class SlicesController < ApplicationController
     @slice.create_backup
 
     respond_to do |format|
-      format.html { redirect_to(@slice.name)}
+      format.html { redirect_to slice_path(@slice.name)}
       format.xml  { render :xml => @backups }
     end
   end

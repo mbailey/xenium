@@ -2,7 +2,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :hosts
 
   map.resources :slices, 
-    :has_one => :config, 
+    :has_one => :config_file, 
     :member => { 
       :toggle_autostart => :put, 
       :start => :put, 

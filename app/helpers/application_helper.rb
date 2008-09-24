@@ -14,7 +14,7 @@ module ApplicationHelper
   
   def slice_toggle_autostart(slice)
     result = []
-    if slice.config.auto? 
+    if slice.config_file.auto? 
       result << link_to_remote('yes', :url => toggle_autostart_slice_path(slice.name), :method => :put, :update => "slice_toggle_autostart_#{slice.name}")
     else
       result << link_to_remote('no', :url => toggle_autostart_slice_path(slice.name),  :method => :put, :update => "slice_toggle_autostart_#{slice.name}")
