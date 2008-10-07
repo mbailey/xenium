@@ -10,7 +10,7 @@ class SlicesController < ApplicationController
     else
       selector = :all
     end
-    @slices = Slice.find(selector)
+    @slices = Xen::Slice.find(selector)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -21,7 +21,7 @@ class SlicesController < ApplicationController
   # GET /slices/1
   # GET /slices/1.xml
   def show
-    @slice = Slice.find(params[:id])
+    @slice = Xen::Slice.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -32,7 +32,7 @@ class SlicesController < ApplicationController
   # GET /slices/new
   # GET /slices/new.xml
   def new
-    @slice = {} # Slice.new
+    @slice = {} # XXX Xen::Slice.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -42,7 +42,7 @@ class SlicesController < ApplicationController
 
   # GET /slices/1/edit
   def edit
-    @slice = Slice.find(params[:id])
+    @slice = Xen::Slice.find(params[:id])
   end
 
   # POST /slices
@@ -50,7 +50,7 @@ class SlicesController < ApplicationController
   def create
     render :text => params.inspect
         
-    @slice = Slice.new(params[:slice])
+    @slice = Xen::Slice.new(params[:slice])
 
     # respond_to do |format|
     #   if @slice.save
@@ -67,7 +67,7 @@ class SlicesController < ApplicationController
   # PUT /slices/1
   # PUT /slices/1.xml
   def update
-    @slice = Slice.find(params[:id])
+    @slice = Xen::Slice.find(params[:id])
 
     respond_to do |format|
       if @slice.update_attributes(params[:slice])
@@ -84,7 +84,7 @@ class SlicesController < ApplicationController
   # DELETE /slices/1
   # DELETE /slices/1.xml
   def destroy
-    @slice = Slice.find(params[:id])
+    @slice = Xen::Slice.find(params[:id])
     @slice.shutdown
 
     respond_to do |format|
@@ -94,7 +94,7 @@ class SlicesController < ApplicationController
   end
   
   def start
-    @slice = Slice.find(params[:id])
+    @slice = Xen::Slice.find(params[:id])
 
     respond_to do |format|
       if @slice.start
@@ -111,7 +111,7 @@ class SlicesController < ApplicationController
   end
   
   def shutdown
-    @slice = Slice.find(params[:id])
+    @slice = Xen::Slice.find(params[:id])
     
     respond_to do |format|
       if @slice.shutdown
@@ -128,7 +128,7 @@ class SlicesController < ApplicationController
   end
   
   def toggle_autostart
-    @slice = Slice.find(params[:id])
+    @slice = Xen::Slice.find(params[:id])
     action = @slice.config_file.auto? ? 'disable' : 'enable'
     respond_to do |format|
       if @slice.config_file.set_auto !@slice.config_file.auto
@@ -146,7 +146,7 @@ class SlicesController < ApplicationController
   
   # XXX move to backups controller?
   def create_backup
-    @slice = Slice.find(params[:id])
+    @slice = Xen::Slice.find(params[:id])
     @slice.create_backup
 
     respond_to do |format|

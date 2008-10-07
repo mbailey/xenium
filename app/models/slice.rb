@@ -1,5 +1,5 @@
-class Slice < Xen::Slice
-  
+class Xen::Slice # We get this from the ruby-xen gem
+
   XEN_CMD_RUNNER = '/usr/local/bin/ruby jobs/xen_cmd.rb' # XXX don't hard code path
   
   # XXX Perhaps DRY this up by extracting commonality

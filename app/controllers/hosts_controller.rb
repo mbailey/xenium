@@ -17,8 +17,8 @@ class HostsController < ApplicationController
   # GET /hosts/1
   # GET /hosts/1.xml
   def show
-    # @host = Host.find(params[:id])
-    @host = Host.new
+    # @host = Xen::Host.find(params[:id])
+    @host = Xen::Host.new
 
     respond_to do |format|
       format.html # show.html.erb
@@ -29,7 +29,7 @@ class HostsController < ApplicationController
   # GET /hosts/new
   # GET /hosts/new.xml
   def new
-    @host = Host.new
+    @host = Xen::Host.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -39,13 +39,13 @@ class HostsController < ApplicationController
 
   # GET /hosts/1/edit
   def edit
-    @host = Host.find(params[:id])
+    @host = Xen::Host.find(params[:id])
   end
 
   # POST /hosts
   # POST /hosts.xml
   def create
-    @host = Host.new(params[:host])
+    @host = Xen::Host.new(params[:host])
 
     respond_to do |format|
       if @host.save
@@ -62,7 +62,7 @@ class HostsController < ApplicationController
   # PUT /hosts/1
   # PUT /hosts/1.xml
   def update
-    @host = Host.find(params[:id])
+    @host = Xen::Host.find(params[:id])
 
     respond_to do |format|
       if @host.update_attributes(params[:host])
@@ -79,7 +79,7 @@ class HostsController < ApplicationController
   # DELETE /hosts/1
   # DELETE /hosts/1.xml
   def destroy
-    @host = Host.find(params[:id])
+    @host = Xen::Host.find(params[:id])
     @host.destroy
 
     respond_to do |format|
