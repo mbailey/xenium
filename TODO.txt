@@ -1,3 +1,5 @@
+make sure config writing works
+
 backups - indicate when backup is not ready yet
 * find out why bj is stopping
 

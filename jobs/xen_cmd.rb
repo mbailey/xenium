@@ -9,5 +9,8 @@ require 'ruby-xen'
 
 # show usage info if wrong args
 # - list commands 
-command = ARGV.shift 
+command = ARGV.shift
 Xen::Command.send(command, *ARGV)
+
+# Marshal.dump
+# Marshal.load
