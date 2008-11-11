@@ -9,11 +9,17 @@
   <%= stylesheet_link_tag 'scaffold' %>
 </head>
 <body id="<%= controller.controller_name %>">
-	<div id="header"><h1>Xenium</h1></div>
+	<div id="header">      
+	  <%= link_to image_tag("/images/xen_.png", :width => "100", :alt=>"logo", :id => "logo"), "/" %>
+	  <h1>Xenium</h1>
+	  <p>Free web management for Xen</p>
+	</div>
 
 <p style="color: green"><%= flash[:notice] %></p>
 
 <%= render 'layouts/menu' %>
+
+
 
 <%= yield  %>
 
