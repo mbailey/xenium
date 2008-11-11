@@ -1,27 +1,60 @@
-<% unless @errors.blank? %>
-	<ul>
-		<% for error in @errors %>
-			<li><p><%= h(error) %></p></li>
-		<% end %>
-	</ul>
-<% end %>
+<table>
+    <thead>
+	<caption>Create new slice</caption>
+	</thead>
+	<tbody>
+	
+	<tr>
+		<td>
+			<% unless @errors.blank? %>
+				<ul>
+					<% for error in @errors %>
+						<li><p><%= h(error) %></p></li>
+					<% end %>
+				</ul>
+			<% end %>
 
-<% form_for :slice, :url => { :action => :create } do |f| %>
-<br style="clear: left"/>
-	<fieldset>
-		Name <%= text_field_tag :name %><br />
-		System Image <%= select_tag(:image, options_for_select(['gutsy', 'hardy'])) %><br />
-	Memory <%= select_tag(:memory, options_for_select(MEMORY_OPTIONS, 512)) %>
-	</fieldset>
-	<fieldset>
-		<legend>Disk</legend>
-		Root <%= select_tag(:size, options_for_select(DISK_OPTIONS, 10)) %>
-		Swap <%= text_field_tag :swap %>
-		
-	</fieldset>
-  <p>
-    <%= f.submit "Create" %>
-  </p>
-<% end %>
+			<% form_for :slice, :url => { :action => :create } do |f| %>
+			<br style="clear: left"/>
+				<fieldset>
+					Name <%= text_field_tag :hostname %><br />
+					Memory <%= select_tag(:memory, options_for_select(MEMORY_OPTIONS, @xen_tools_conf.memory_in_mb)) %>
+				</fieldset>
+				<fieldset>
+					<legend>Distro</legend>
+					System Image <%= select_tag(:dist, options_for_select(['','gutsy', 'hardy'], @xen_tools_conf.dist), :onChange => "$('tarball').value = ''") %><br />
+					<% if @tarballs %>
+						<b>or</b><br />
+						<% options = @tarballs.collect{|t| ["#{t.name} #{t.version}", t.fullpath] } %>											
+						Install from backup image <%= select_tag(:tarball, 			
+					options_for_select(options.unshift(['',''])), 
+					:onChange => "$('dist').value = ''") %>
+					<% end %>
+					
+				</fieldset>
+					
+				<fieldset>
+					<legend>Disk</legend>
+					
+					<% options = DISK_OPTIONS.collect{|option| ["#{option} Gb", option * 1024] } %>
+					Root <%= select_tag(:size, options_for_select(options, @xen_tools_conf.size_in_mb)) %><br />
+					Volume: <%= @xen_tools_conf.lvm %> (<%=  Xen::VolumeGroup.find(@xen_tools_conf.lvm).free %> Gb free)
+				</fieldset>
+				<fieldset>
+					<legend>Networking</legend>
+					IP Address <%= text_field_tag :ip %>
+				</fieldset>
+				<fieldset>
+					<legend>Create options</legend>
+					Force? <%= check_box_tag :force, 'true' %><br />
+					Boot? <%= check_box_tag :boot, 'true' %><br />
+					Root Password <%= text_field_tag :root_pass %><br />
+				</fieldset>
+			  <p>
+			    <%= f.submit "Create" %>
+			  </p>
+			<% end %>
 
-<%= link_to 'Back', slices_path %>
+		</td>
+	</tr>
+</table>
