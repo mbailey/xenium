@@ -1,4 +1,6 @@
 class IpsController < ApplicationController
+  before_filter :load_host_details
+  
   # GET /ips
   # GET /ips.xml
   def index

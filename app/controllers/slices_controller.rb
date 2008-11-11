@@ -1,4 +1,7 @@
 class SlicesController < ApplicationController
+  before_filter :load_host_details
+  before_filter :load_xen_tools_conf
+  
   # GET /slices
   # GET /slices.xml
   
@@ -32,7 +35,8 @@ class SlicesController < ApplicationController
   # GET /slices/new
   # GET /slices/new.xml
   def new
-    @slice = {} # XXX Xen::Slice.new
+    @slice = Xen::Slice.new
+    @tarballs = Xen::Backup.find
 
     respond_to do |format|
       format.html # new.html.erb
@@ -48,20 +52,21 @@ class SlicesController < ApplicationController
   # POST /slices
   # POST /slices.xml
   def create
-    render :text => params.inspect
+    # render :text => params.inspect
         
-    @slice = Xen::Slice.new(params[:slice])
+    @slice = Xen::Slice.new(params)
 
-    # respond_to do |format|
-    #   if @slice.save
-    #     flash[:notice] = 'Slice was successfully created.'
-    #     format.html { redirect_to(@slice) }
-    #     format.xml  { render :xml => @slice, :status => :created, :location => @slice }
-    #   else
-    #     format.html { render :action => "new" }
-    #     format.xml  { render :xml => @slice.errors, :status => :unprocessable_entity }
-    #   end
-    # end
+    respond_to do |format|
+      if @slice.create_image(params)
+        @slice = Xen::Slice.find(params[:name])
+        flash[:notice] = 'Slice was successfully created.'
+        format.html { redirect_to(slice_path(@slice)) }
+        format.xml  { render :xml => @slice, :status => :created, :location => @slice }
+      else
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @slice.errors, :status => :unprocessable_entity }
+      end
+    end
   end
 
   # PUT /slices/1

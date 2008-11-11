@@ -1,4 +1,6 @@
 class NetworksController < ApplicationController
+  before_filter :load_host_details
+  
   # GET /networks
   # GET /networks.xml
   def index

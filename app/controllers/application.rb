@@ -3,7 +3,7 @@
 
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
-  
+    
   before_filter :authenticate
   def authenticate
 
@@ -12,7 +12,16 @@ class ApplicationController < ActionController::Base
       end
 
   end
-
+  
+  # Make general host info available to all controllers
+  def load_host_details
+    @host ||= Xen::Host.find
+  end
+  
+  def load_xen_tools_conf
+    @xen_tools_conf ||= Xen::XenToolsConf.find
+  end  
+  
   # See ActionController::RequestForgeryProtection for details
   # Uncomment the :secret if you're not using the cookie session store
   protect_from_forgery # :secret => 'fca2d56e39589aa9ddbfa43d6892c6ec'
