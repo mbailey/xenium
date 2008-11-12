@@ -1,5 +1,5 @@
 <ul id="nav">
-<% %w(hosts slices networks ips).each do |item| %>
+<% %w(slices networks ips).each do |item| %>
   <li id="t-<%= item %>"><%= link_to item, "/#{item}" %></li>
 <% end %>
 </ul>
