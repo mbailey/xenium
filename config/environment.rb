@@ -67,8 +67,11 @@ Rails::Initializer.run do |config|
   # Activate observers that should always be running
   # config.active_record.observers = :cacher, :garbage_collector
 end
-MEMORY_OPTIONS = [256, 512, 1024, 2048]
-DISK_OPTIONS = [1, 2, 5, 10, 20, 50, 100]
+MEMORY_OPTIONS = [256, 512, 1024, 2048] # Mb
+DISK_OPTIONS = [2, 4, 10, 20, 50, 100] # Gb
+
+# Monkey patch RubyXen classes using files in lib/
+require 'xen/slice.rb'
 
 # Set to this to true if you don't want backgroundjob to be started when rails starts
-# Bj.config["development.no_tickle"] = false
+Bj.config["development.no_tickle"] = true
