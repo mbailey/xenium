@@ -7,6 +7,7 @@
 			<th scope="col">backup exists?</th>
 			<th scope="col">autostart?</th>
 			<th scope="col"></th>
+			<th scope="col"></th>
 		</tr>
 	</thead>
 	<% @slices.each do |slice| %>
@@ -15,7 +16,8 @@
 		<td><%= slice.config_file.memory %></td>
 		<td><%= slice.backups.empty? ? '' : 'yes' %></td>
 		<td id="slice_toggle_autostart_<%= slice.name %>"><%= slice_toggle_autostart(slice) %></td>
-		<td id="slice_controls_<%= slice.name %>"><%= slice_control_buttons(slice) %></td>	
+		<td id="slice_controls_<%= slice.name %>"><%= slice_control_buttons(slice) %></td>
+		<td><%= slice.running? ? link_to('ssh', "ssh://#{slice.ip}/") : ''  %></td>
 	</tr>
 
 	<% end %>
