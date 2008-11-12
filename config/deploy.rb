@@ -3,7 +3,7 @@ require 'deprec'
 role :dom0, 'bb'
 
 task :push do
-  `rsync -avz --delete ./ bb:/opt/apps/xenium/`
+  `rsync -avz --delete ./ bb:/opt/apps/xenium/manual`
 end 
 
 task :archive, :roles => :dom0 do
@@ -12,9 +12,9 @@ task :archive, :roles => :dom0 do
 end
 
   
-set :application, "set your application name here"
-set :domain, "set domain name project will be served on here"
-set :repository,  "svn+ssh://#{domain}/var/www/apps/#{application}/repos/trunk"
+set :application, "xenium"
+set :domain, "bb.deprecated.org"
+set :repository,  "git://github.com/mbailey/xenium.git"
 # set :gems_for_project, %w(dr_nic_magic_models swiftiply) # list of gems to be installed
 
 # Update these if you're not running everything on one host.

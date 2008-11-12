@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080916014052) do
+ActiveRecord::Schema.define(:version => 20081023071300) do
 
   create_table "bj_config", :id => false, :force => true do |t|
     t.integer "bj_config_id", :null => false
