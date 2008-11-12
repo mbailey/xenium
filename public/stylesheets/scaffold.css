@@ -6,7 +6,7 @@ body {
 	background-color: #ECF1EF;
 	}
 
-table a { color: #698B22; font-size: 110%; }
+table a { color: #00688B; font-size: 110%; }
 img {border: 0;}
 /*#77985C*/
 #header {
@@ -26,11 +26,11 @@ img {border: 0;}
 	background-repeat: no-repeat;
 }
 
-#nav a {
+#nav a{
 	float: left;
 	display: block;
 	margin: -1px;
-	padding: 4px 9px 10px 8px;
+	padding: 5px 10px 10px 9px;
 	color: #330033;
 	font-size: 120%;
 	text-decoration: none;
@@ -46,6 +46,37 @@ img {border: 0;}
 	background: #fff;
 	}
 
+#dip{
+	float: left;
+	width: 90%;
+	margin: 0;
+	padding: 20px 0 10px 46px;
+	list-style: none;
+	background: #330033;
+	background-image: url('/images/bg.png');
+	background-position: right;
+	background-repeat: repeat-y;
+	color:#fff;
+}
+
+#dip li{
+	display:inline;
+	padding:.2em;
+	font-size:130%;
+}
+
+#dip h2{
+	display:inline;
+	font-size:150%;
+}
+
+#logo {
+	position:absolute;
+	top:1.6em;
+}
+
+#header h1, p{margin-left:105px;line-height:2px;}
+#header p{margin-top:-5px;}
 
 
 /* Tables */
@@ -90,13 +121,14 @@ table tr.even {
 }
 
 thead th, thead td, tfoot tr, tfoot th, tfoot td {
-	background: #333;
+	background: #282828;
+    background-image: url('/images/bg2.png');
 	color: #ECF1EF;
 }
 
 table caption {
 	margin: 0;
-	padding: 1em;
+	padding: 1em 1em 1em .8em;
 	text-align: left;
 	border-right: 2px solid #EBECE4;
 	background: #fff;
