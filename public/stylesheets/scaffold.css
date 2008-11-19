@@ -62,12 +62,7 @@ img {border: 0;}
 #dip li{
 	display:inline;
 	padding:.2em;
-	font-size:130%;
-}
-
-#dip h2{
-	display:inline;
-	font-size:150%;
+	margin-right: 1em;
 }
 
 #logo {
