@@ -20,6 +20,16 @@ module ApplicationHelper
       result << link_to_remote('no', :url => toggle_autostart_slice_path(slice.name),  :method => :put, :update => "slice_toggle_autostart_#{slice.name}")
     end
   end
+  
+  def format_bytes(megabytes)
+    megabytes = Integer(megabytes)
+    if megabytes > 1024
+      sprintf "%2.1f Gb", megabytes/1024.0
+    else
+      "#{megabytes} Mb"
+    end
+  end
+      
     
 end
 

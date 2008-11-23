@@ -1,9 +1,7 @@
 <ul id="dip">
-  <h2>Xen Host: </h2>  
-    <li>Brodaigh</li>
-    <li>Human</li>
-    <li>101M</li>
-    <li>0.001M</li>
+	<li style="font-size: 150%"><%= @host.host %></li>  
+    <li>RAM: <%= format_bytes(@host.total_memory) %> (<%= format_bytes(@host.free_memory) %> free)</li>
+    <li>CPUs: <%= @host.nr_cpus %></li>
 </ul>
 <ul id="nav">
 <% %w(slices networks ips).each do |item| %>

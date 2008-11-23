@@ -140,7 +140,8 @@ table caption a {
 }
 
 table td.actions {
-	background-color: #F7F7F7;
+	/* background-color: #F7F7F7; */
+	width: 80px;
 }
 
 tfoot td {

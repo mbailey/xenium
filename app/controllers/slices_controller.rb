@@ -14,7 +14,7 @@ class SlicesController < ApplicationController
       selector = :all
     end
     @slices = Xen::Slice.find(selector)
-
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @slices }

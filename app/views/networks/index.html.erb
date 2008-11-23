@@ -14,7 +14,7 @@
 
 	<% for network in @networks %>
 	<tbody>
-		<tr>
+		<tr class="<%= cycle('odd','even') %>">
 			<td class="name"><%= link_to h(network.name), network_path(network) %></td>
 			<td><%=h network.network_address %></td>
 			<td><%=h network.netmask %></td>
