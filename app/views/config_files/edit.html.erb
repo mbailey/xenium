@@ -1,0 +1,39 @@
+<table>
+  <caption>Edit Config for Slice: <%= @slice.name %></caption>
+  <tr>
+    <td>
+		<% form_for :config_file, @config_file, :url => slice_config_file_path(@slice.name), :html => { :method => :put } do |f| %>
+	
+			<fieldset>
+				<legend>Basic details</legend>
+			Memory: <%= select_tag(:memory, options_for_select(MEMORY_OPTIONS, @config_file.memory)) %> <br />
+			</fieldset>
+			<fieldset>
+				<legend>Network Interfaces</legend>
+			<%# @config_file.vifs.each_with_index do |vif, index| %>
+			<table>
+				<tr>
+					<th>Enabled</th>
+					<th>IP</th>
+					<th>Mac</th>
+					<th>Bridge</th>
+					<th>Vif name</th>
+				</tr>
+			<% 3.times do |index| %>
+				<% fields_for :vif, @config_file.vifs[index] do |vif| %>
+				<tr>
+				    <td><%= check_box_tag "vif[#{index}][enabled]", true, @config_file.vifs[index], :index => index %></td>
+					<td><%= vif.text_field :ip, :index => index, :style => 'width: 120px' %></td>
+					<td><%= vif.text_field :mac, :index => index, :style => 'width: 150px'  %></td>
+					<td><%= vif.text_field :bridge, :index => index, :style => 'width: 120px' %></td>
+					<td><%= vif.text_field :vifname, :index => index, :style => 'width: 120px' %></td>
+				</tr>
+				<% end %>
+			<% end %>
+			</table>
+		</fieldset>
+		<%= f.submit "Update" %>
+		<% end %>
+	</td>
+  </tr>
+</table>

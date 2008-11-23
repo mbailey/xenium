@@ -1,0 +1,28 @@
+<table>
+	<caption>Config for Slice: <%= @slice.name %> <%= link_to image_tag('/images/Edit.png', :alt => "Edit Slice", :title => "Edit Slice"), edit_slice_config_file_path(@slice.name) %></caption>
+	<tr>
+		<td>
+			<h2>General Info</h2>
+			Memory: <%= @config_file.memory %><br />
+
+			<h2>Network Interfaces</h2>
+			<table>
+				<tr>
+					<th>Enabled</th>
+					<th>IP</th>
+					<th>Mac</th>
+					<th>Bridge</th>
+					<th>Vif name</th>
+				</tr>
+				<% @config_file.vifs.each do |vif| %>
+				<tr>
+					<td><%= vif.ip %></td>
+					<td><%= vif.mac%></td>
+					<td><%= vif.bridge %></td>
+					<td><%= vif.vifname %></td>
+				</tr>
+				<% end %>
+			</table>
+		</td>
+	</tr>
+</table>
