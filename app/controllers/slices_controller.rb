@@ -56,7 +56,7 @@ class SlicesController < ApplicationController
     @slice = Xen::Slice.new(params)
 
     respond_to do |format|
-      if @slice.create_image(params.merge(:passwd => false)) # Disable interactive password prompt
+      if @slice.create_image(params)
         @slice = Xen::Slice.find(params[:name])
         flash[:notice] = 'Slice was successfully created.'
         format.html { redirect_to(slice_path(@slice)) }
