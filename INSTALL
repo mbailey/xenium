@@ -1,0 +1,31 @@
+# Install git
+cap deprec:git:install
+
+# Install Ruby Xen
+git clone git@github.com:mbailey/ruby-xen.git
+cd ruby-xen
+gem build ruby-xen.gemspec 
+sudo gem install ruby-xen-0.0.3.gem 
+
+# Install Xenium
+git clone git@github.com:mbailey/xenium.git
+
+
+sudo gem install rake
+
+
+
+
+rake db:create:all
+rake db:migrate
+
+
+
+sudo apt-get install libexpect-perl
+
+
+
+# Setup apt mirror
+#
+# Save on bandwidth
+
