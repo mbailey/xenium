@@ -1,4 +1,4 @@
-require 'deprec'
+# require 'deprec'
 
 role :dom0, 'bb'
 
@@ -20,8 +20,13 @@ set :repository,  "git://github.com/mbailey/xenium.git"
 # Update these if you're not running everything on one host.
 role :app, domain
 role :web, domain
+role :passenger, domain
 role :db,  domain, :primary => true
 role :scm, domain # used by deprec if you want to install subversion
+
+set :rails_env, 'development'
+set :passenger_max_instances_per_app, 2
+
 
 # If you aren't deploying to /opt/apps/#{application} on the target
 # servers (which is the deprec default), you can specify the actual location

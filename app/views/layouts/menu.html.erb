@@ -4,7 +4,7 @@
     <li>CPUs: <%= @host.nr_cpus %></li>
 </ul>
 <ul id="nav">
-<% %w(slices networks ips).each do |item| %>
+<% %w(slices).each do |item| %>
   <li id="t-<%= item %>"><%= link_to item, "/#{item}" %></li>
 <% end %>
 </ul>
