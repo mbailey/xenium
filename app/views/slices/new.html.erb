@@ -18,7 +18,7 @@
 			<br style="clear: left"/>
 				<fieldset>
 					Name <%= text_field_tag :hostname %><br />
-					Memory <%= select_tag(:memory, options_for_select(MEMORY_OPTIONS, @xen_tools_conf.memory_in_mb)) %>
+					Memory <%= select_tag(:memory, options_for_select(MEMORY_OPTIONS, @xen_tools_conf.memory.to_megabytes)) %>
 				</fieldset>
 				<fieldset>
 					<legend>Distro</legend>
@@ -37,8 +37,8 @@
 					<legend>Disk</legend>
 					
 					<% options = DISK_OPTIONS.collect{|option| ["#{option} Gb", option * 1024] } %>
-					Root <%= select_tag(:size, options_for_select(options, @xen_tools_conf.size_in_mb)) %><br />
-					Volume: <%= @xen_tools_conf.lvm %> (<%=  Xen::VolumeGroup.find(@xen_tools_conf.lvm).free %> Gb free)
+					Root <%= select_tag(:size, options_for_select(options, @xen_tools_conf.size.to_megabytes)) %><br />
+					Volume: <%= @xen_tools_conf.lvm %> (<%= @xen_tools_conf.lvm ? "#{Xen::VolumeGroup.find(@xen_tools_conf.lvm).free} Gb free" : '<span style="color: #FF0000">Error! Volume not found! </span>'%>)
 				</fieldset>
 				<fieldset>
 					<legend>Networking</legend>
