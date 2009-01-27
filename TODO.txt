@@ -1,4 +1,7 @@
 * warn if not running as root
+* create_backup 
+  - warn if diskspace low
+  - refresh 'pending'
 
 /slices : perhaps break into two lists. show running up top, and stopped below
 

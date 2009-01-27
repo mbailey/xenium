@@ -57,9 +57,9 @@ class SlicesController < ApplicationController
 
     respond_to do |format|
       if @slice.create_image(params)
-        @slice = Xen::Slice.find(params[:name])
+        @slice = Xen::Slice.find(params[:hostname])
         flash[:notice] = 'Slice was successfully created.'
-        format.html { redirect_to(slice_path(@slice)) }
+        format.html { redirect_to(slice_path(@slice.name)) }
         format.xml  { render :xml => @slice, :status => :created, :location => @slice }
       else
         format.html { render :action => "new" }
