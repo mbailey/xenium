@@ -48,7 +48,7 @@
 					<legend>Create options</legend>
 					Force? <%= check_box_tag :force, 'true' %><br />
 					Boot? <%= check_box_tag :boot, 'true' %><br />
-					Root Password <%= text_field_tag :root_pass %><br />
+					Root Password <%= password_field_tag :root_pass %><br />
 				</fieldset>
 			  <p>
 			    <%= f.submit "Create" %>
