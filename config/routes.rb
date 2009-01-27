@@ -9,10 +9,6 @@ ActionController::Routing::Routes.draw do |map|
       :shutdown => :put,
       :create_backup => :post }
 
-  map.resources :networks, :has_many => :ips
-
-  map.resources :ips
-
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:
