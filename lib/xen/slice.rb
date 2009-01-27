@@ -13,7 +13,7 @@ class Xen::Slice # We get this from the ruby-xen gem
   
   def create_backup(version=nil)
     version ||= Time.now.strftime('%Y%m%d')
-    Bj.submit "#{XEN_CMD_RUNNER} backup_slice #{name} #{version} :blocking", :tag => "#{name}.backup_slice"
+    Bj.submit "#{XEN_CMD_RUNNER} create_backup #{name} #{version} :blocking", :tag => "#{name}.create_backup"
   end
   
   def shutting_down?
