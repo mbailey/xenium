@@ -24,7 +24,9 @@ xen-tools (http://www.xen-tools.org/software/xen-tools/)
 
 == INSTALL:
 
-# Install Xenium
+# Install required packages
+sudo apt-get install libsqlite3-dev # Ubuntu
+sudo gem install -v=2.2.2 rails --no-rdoc --no-ri
 git clone http://github.com/mbailey/xenium
 rake gems:install
 rake db:migrate
