@@ -30,7 +30,7 @@ class Xen::Slice # We get this from the ruby-xen gem
   
   # not working yet
   def backup_pending?
-    Bj.table.job.find(:first, :conditions => "tag = '#{name}.backup_slice' and state in ('pending')")
+    Bj.table.job.find(:first, :conditions => "tag = '#{name}.create_backup' and state in ('pending')")
   end
   
   alias _state state
