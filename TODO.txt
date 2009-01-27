@@ -1,3 +1,5 @@
+* warn if not running as root
+
 /slices : perhaps break into two lists. show running up top, and stopped below
 
 make sure config writing works
