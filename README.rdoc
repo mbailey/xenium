@@ -24,20 +24,29 @@ xen-tools (http://www.xen-tools.org/software/xen-tools/)
 
 == INSTALL:
 
-# Install required packages
-sudo apt-get install libsqlite3-dev # Ubuntu
-sudo gem install -v=2.2.2 rails --no-rdoc --no-ri
-git clone http://github.com/mbailey/xenium
-rake gems:install
-rake db:migrate
-./script/server
+git clone git://github.com/mbailey/xenium.git
+cd xenium
+
+# 1. Specify the domain name Xenium should be served on.
+
+	set :domain, "host.example.com"
+
+# 2. Update these if you're not running everything on the host specified above.
+
+	role :app, domain
+	role :web, domain
+	role :db,  domain, :primary => true
+
+# 3. Run 'cap install_xenium' to install a full Rails stack and start Xenium.
+
+# 4. Login to the Xenium web interface!
 
 
 == LICENSE:
 
 (The MIT License)
 
-Copyright (c) 2008 Mike Bailey and Nick Marfleet
+Copyright (c) 2008-2009 Mike Bailey
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

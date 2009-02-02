@@ -1,10 +1,51 @@
 require 'deprec'
 
-# 1. Specify the domain name for the Xen server Xenium should run on.
-set :domain, "host.example.com"
-set :domain, "hobbes.blocksglobal.com"
+# Instructions for deploying Xenium
 
-# 2. Run 'cap install_xenium' to install a full Rails stack and start Xenium.
+# 1. Specify the domain name Xenium should be served on.
+
+	set :domain, "host.example.com"
+
+# 2. Update these if you're not running everything on the host specified above.
+
+	role :app, domain
+	role :web, domain
+	role :db,  domain, :primary => true
+
+# 3. Run 'cap install_xenium' to install a full Rails stack and start Xenium.
+
+# 4. You're done. Login to the Xenium web interface.
+
+
+
+#################################################
+# You shouldn't need to change the values below.#
+#################################################
+
+set :application, "xenium"
+set :scm, :git
+set :repository,  "git://github.com/mbailey/xenium.git"
+
+# Xenium uses the ruby-xen gem. 
+# http://github.com/mbailey/ruby-xen/tree/master
+#
+set :gems_for_project, %w(ruby-xen) # list of gems to be installed
+
+# Xenium needs to run as root in order to control Xen
+set :app_user, :root
+set :app_group, :root
+
+# Passenger doesn't permit us to run as root so we use mongrel+nginx
+set :passenger_use_ree, false
+set :web_server_type, :nginx
+set :app_server_type, :mongrel
+set :db_server_type, :sqlite
+
+namespace :deploy do
+  task :restart, :roles => :app, :except => { :no_release => true } do
+    top.deprec.app.restart
+  end
+end
 
 task :install_xenium do
   top.deprec.rails.install_stack
@@ -19,39 +60,3 @@ task :install_xenium do
 
 EOF
 end
-
-# Xenium uses the ruby-xen gem. 
-# http://github.com/mbailey/ruby-xen/tree/master
-#
-set :gems_for_project, %w(ruby-xen) # list of gems to be installed
-
-#
-# You shouldn't need to change the values below.
-#
-set :application, "xenium"
-set :scm, :git
-set :repository,  "git://github.com/mbailey/xenium.git"
-
-# Xenium needs to run as root in order to control Xen
-set :app_user, :root
-set :app_group, :root
-
-# Passenger doesn't permit us to run as root so we use mongrel+nginx
-set :passenger_use_ree, false
-set :web_server_type, :nginx
-set :app_server_type, :mongrel
-set :db_server_type, :sqlite
-
-
-# Update these if you're not running everything on one host.
-role :app, domain
-role :web, domain
-role :db,  domain, :primary => true
-role :scm, domain # used by deprec if you want to install subversion
-
-namespace :deploy do
-  task :restart, :roles => :app, :except => { :no_release => true } do
-    top.deprec.app.restart
-  end
-end
-
