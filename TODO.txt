@@ -1,3 +1,24 @@
+xenium/TODO.txt
+
+-- milestone 1
+* enter password twice when creating slice
+* slice.create: ping new IP and warn if already active
+* slice.create: don't create if guest by same name running (shutdown?)
+* slice.list: order slices alphabetically
+* slice.delete: ability to remove slice
+
+-- milestone 2
+* list of networks to accept connections from
+* configure xen-config.sxp
+* slice.edit: add pulldown for xenbr's
+* crud for backups
+
+-- milestone 3
+* time slice creation and present big happy msg
+* manage lvms
+* tail logs
+
+
 * warn if not running as root
 * create_backup 
   - warn if diskspace low
