@@ -26,20 +26,23 @@ xen-tools (http://www.xen-tools.org/software/xen-tools/)
 
 git clone git://github.com/mbailey/xenium.git
 cd xenium
+cp config/deploy.rb-example config/deploy.rb
 
-# 1. Specify the domain name Xenium should be served on.
+# Edit deploy.rb
+#
+# Specify the domain name Xenium should be served on.
 
 	set :domain, "host.example.com"
 
-# 2. Update these if you're not running everything on the host specified above.
+# Update these if you're not running everything on the host specified above.
 
 	role :app, domain
 	role :web, domain
 	role :db,  domain, :primary => true
 
-# 3. Run 'cap install_xenium' to install a full Rails stack and start Xenium.
+# Run 'cap install_xenium' to install a full Rails stack and start Xenium.
 
-# 4. Login to the Xenium web interface!
+# Login to the Xenium web interface!
 
 
 == LICENSE:
