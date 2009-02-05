@@ -29,17 +29,20 @@ set :repository,  "git://github.com/mbailey/xenium.git"
 # Xenium uses the ruby-xen gem. 
 # http://github.com/mbailey/ruby-xen/tree/master
 #
-set :gems_for_project, %w(ruby-xen) # list of gems to be installed
+set :gems_for_project, %w(ruby-xen bj) # list of gems to be installed
 
 # Xenium needs to run as root in order to control Xen
 set :app_user, :root
 set :app_group, :root
 
 # Passenger doesn't permit us to run as root so we use mongrel+nginx
-set :passenger_use_ree, false
-set :web_server_type, :nginx
+set :ruby_vm_type,    :mri
+set :web_server_type, :apache
 set :app_server_type, :mongrel
-set :db_server_type, :sqlite
+set :db_server_type,  :sqlite
+
+set :apache_ssl_enabled, true
+set :apache_ssl_forward_all, true
 
 namespace :deploy do
   task :restart, :roles => :app, :except => { :no_release => true } do
