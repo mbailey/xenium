@@ -3,3 +3,5 @@ db/production.sqlite3
 log/*
 config/mongrel
 config/nginx
+config/deploy.rb
+config/ssl/*
