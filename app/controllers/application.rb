@@ -3,16 +3,8 @@
 
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
-    
   before_filter :authenticate
-  def authenticate
 
-      authenticate_or_request_with_http_basic do |username, password|
-        password == 'holymoly'
-      end
-
-  end
-  
   # Make general host info available to all controllers
   def load_host_details
     @host ||= Xen::Host.find
@@ -30,4 +22,11 @@ class ApplicationController < ActionController::Base
   # Uncomment this to filter the contents of submitted sensitive data parameters
   # from your application log (in this case, all fields with names like "password"). 
   filter_parameter_logging :password
+  
+  private
+    def authenticate
+        authenticate_or_request_with_http_basic do |username, password|
+          username == XENIUM_ADMIN_USERNAME && password == XENIUM_ADMIN_PASSWORD
+        end
+    end
 end

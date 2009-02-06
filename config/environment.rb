@@ -76,3 +76,6 @@ require 'xen/slice.rb'
 
 # Set to this to true if you don't want backgroundjob to be started when rails starts
 # Bj.config["development.no_tickle"] = true
+
+XENIUM_ADMIN_USERNAME = 'admin'
+XENIUM_ADMIN_PASSWORD = 'admin'
