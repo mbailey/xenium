@@ -31,6 +31,9 @@ set :repository,  "git://github.com/mbailey/xenium.git"
 #
 set :gems_for_project, %w(ruby-xen bj) # list of gems to be installed
 
+# Ensure production database is maintained between deployments
+set :shared_dirs, 'db/production'
+
 # Xenium needs to run as root in order to control Xen
 set :app_user, :root
 set :app_group, :root
