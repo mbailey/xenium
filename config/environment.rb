@@ -77,5 +77,12 @@ require 'xen/slice.rb'
 # Set to this to true if you don't want backgroundjob to be started when rails starts
 # Bj.config["development.no_tickle"] = true
 
-XENIUM_ADMIN_USERNAME = 'admin'
-XENIUM_ADMIN_PASSWORD = 'admin'
+PASSWORD_FILE = File.join(File.dirname(__FILE__),'..','system', 'admin_password')
+if ! File.exists? PASSWORD_FILE
+  FileUtils.mkdir_p(File.dirname(PASSWORD_FILE))
+  File.open(PASSWORD_FILE, 'w') do |f|
+    f.write "XENIUM_ADMIN_USERNAME = 'admin'\n"
+    f.write "XENIUM_ADMIN_PASSWORD = ''\n"
+  end
+end
+load PASSWORD_FILE
