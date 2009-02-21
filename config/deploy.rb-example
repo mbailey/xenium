@@ -18,9 +18,9 @@ require 'deprec'
 
 
 
-#################################################
-# You shouldn't need to change the values below.#
-#################################################
+##################################################
+# You shouldn't need to change the values below. #
+##################################################
 
 set :application, "xenium"
 set :scm, :git
@@ -32,11 +32,10 @@ set :repository,  "git://github.com/mbailey/xenium.git"
 set :gems_for_project, %w(ruby-xen bj) # list of gems to be installed
 
 # Ensure production database is maintained between deployments
-set :shared_dirs, 'db/production'
+set :shared_dirs, %w(db/production system)
 
 # Xenium needs to run as root in order to control Xen
 set :app_user, :root
-set :app_group, :root
 
 # Passenger doesn't permit us to run as root so we use mongrel+nginx
 set :ruby_vm_type,    :mri
@@ -51,6 +50,11 @@ namespace :deploy do
   task :restart, :roles => :app, :except => { :no_release => true } do
     top.deprec.app.restart
   end
+end
+
+# Ensure we have write access to database
+before 'deploy:migrate' do 
+  sudo "chmod -R g+w #{shared_path}/db"
 end
 
 task :install_xenium do
