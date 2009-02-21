@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
   private
     def authenticate
       if XENIUM_ADMIN_PASSWORD.empty?
-        render :text => "Please edit #{PASSWORD_FILE} and set a password"
+        render :text => "Password is not set.\nEdit #{PASSWORD_FILE} and restart app"
       else
         authenticate_or_request_with_http_basic do |username, password|
           username == XENIUM_ADMIN_USERNAME && password == XENIUM_ADMIN_PASSWORD
