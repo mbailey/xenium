@@ -60,7 +60,7 @@ end
 task :install_xenium do
   top.deprec.rails.install_stack
   top.deploy.setup
-  top.deploy
+  top.deploy.default
   top.deploy.migrate
   puts <<-EOF
 

@@ -7,6 +7,10 @@ http://github.com/mbailey/xenium
 xenium is a web application for managing Xen virtual servers. It makes 
 use of the ruby-xen library to interact with Xend.
 
+xenium means "A present given to a guest or stranger, or to a foreign ambassador."
+I would love to hear from any guests, strangers (or foreign ambassadors) who find it useful.
+
+
 == FEATURES/PROBLEMS:
 
 * Xenium makes use of Ara Howard's BackgroundJob gem to process tasks that
@@ -24,17 +28,30 @@ xen-tools (http://www.xen-tools.org/software/xen-tools/)
 
 == INSTALL:
 
+All the following commands are run on your workstation and use Capistrano/deprec
+to install and configure the required software. You'll need ruby and rubygems installed
+locally and can then install deprec with the following command:
+
+sudo gem install deprec
+
+# Install Xen and required tools on fresh ubuntu host using deprec (www.deprec.org)
+
+cap deprec:xen:install
+cap deprec:ubuntu:upgrade
+cap deprec:ubuntu:restart
+
+# Install Xenium
 git clone git://github.com/mbailey/xenium.git
 cd xenium
 cp config/deploy.rb-example config/deploy.rb
 
 # Edit deploy.rb
-#
-# Specify the domain name Xenium should be served on.
+
+  # Specify the domain name Xenium should be served on.
 
 	set :domain, "host.example.com"
 
-# Update these if you're not running everything on the host specified above.
+  # Update these if you're not running everything on the host specified above.
 
 	role :app, domain
 	role :web, domain
@@ -43,6 +60,24 @@ cp config/deploy.rb-example config/deploy.rb
 # Run 'cap install_xenium' to install a full Rails stack and start Xenium.
 
 # Login to the Xenium web interface!
+
+
+#
+# Optional: A nicer way to run backgroundrb
+#
+
+Uncomment the following line in environment.rb:
+
+    Bj.config["development.no_tickle"] = true
+
+and add create the following file on the server:
+
+# /etc/cron.d/xenium
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+MAILTO=root # replace with your email address
+HOME=/
+*/15 * * * * root bj run --forever --rails_env=production --rails_root=/opt/apps/xenium/current
 
 
 == LICENSE:

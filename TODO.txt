@@ -1,6 +1,9 @@
 xenium/TODO.txt
 
 -- milestone 1
+* don't list 'running' backup as completed
+* check password being set
+* deploy.rb should prompt for password and generate password file during cap:setup
 * enter password twice when creating slice
 * slice.create: ping new IP and warn if already active
 * slice.create: don't create if guest by same name running (shutdown?)
