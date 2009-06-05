@@ -36,14 +36,15 @@ sudo gem install deprec
 
 # Install Xen and required tools on fresh ubuntu host using deprec (www.deprec.org)
 
-cap deprec:xen:install
-cap deprec:ubuntu:upgrade
-cap deprec:ubuntu:restart
+  cap deprec:xen:install
+  cap deprec:ubuntu:upgrade
+  cap deprec:ubuntu:restart
 
 # Install Xenium
-git clone git://github.com/mbailey/xenium.git
-cd xenium
-cp config/deploy.rb-example config/deploy.rb
+
+  git clone git://github.com/mbailey/xenium.git
+  cd xenium
+  cp config/deploy.rb-example config/deploy.rb
 
 # Edit deploy.rb
 
