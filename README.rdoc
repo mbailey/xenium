@@ -32,7 +32,7 @@ All the following commands are run on your workstation and use Capistrano/deprec
 to install and configure the required software. You'll need ruby and rubygems installed
 locally and can then install deprec with the following command:
 
-sudo gem install deprec
+  sudo gem install deprec
 
 # Install Xen and required tools on fresh ubuntu host using deprec (www.deprec.org)
 
@@ -58,7 +58,9 @@ sudo gem install deprec
 	role :web, domain
 	role :db,  domain, :primary => true
 
-# Run 'cap install_xenium' to install a full Rails stack and start Xenium.
+# Install a full Rails stack and start Xenium:
+
+  cap install_xenium
 
 # Login to the Xenium web interface!
 
