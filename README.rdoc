@@ -71,16 +71,16 @@ locally and can then install deprec with the following command:
 
 Uncomment the following line in environment.rb:
 
-    Bj.config["development.no_tickle"] = true
+  Bj.config["development.no_tickle"] = true
 
 and add create the following file on the server:
 
-# /etc/cron.d/xenium
-SHELL=/bin/bash
-PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-MAILTO=root # replace with your email address
-HOME=/
-*/15 * * * * root bj run --forever --rails_env=production --rails_root=/opt/apps/xenium/current
+  # /etc/cron.d/xenium
+  SHELL=/bin/bash
+  PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+  MAILTO=root # replace with your email address
+  HOME=/
+  */15 * * * * root bj run --forever --rails_env=production --rails_root=/opt/apps/xenium/current
 
 
 == LICENSE:
