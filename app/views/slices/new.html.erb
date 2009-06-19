@@ -22,7 +22,7 @@
 				</fieldset>
 				<fieldset>
 					<legend>Distro</legend>
-					System Image <%= select_tag(:dist, options_for_select(['','gutsy', 'hardy'], @xen_tools_conf.dist), :onChange => "$('tarball').value = ''") %><br />
+					System Image <%= select_tag(:dist, options_for_select(['', 'hardy', 'intrepid', 'jaunty'], @xen_tools_conf.dist), :onChange => "$('tarball').value = ''") %><br />
 					<% if @tarballs %>
 						<b>or</b><br />
 						<% options = @tarballs.collect{|t| ["#{t.name} #{t.version}", t.fullpath] } %>											
