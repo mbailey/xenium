@@ -260,3 +260,11 @@ pre {
 .show_table td, .show_table th {
 	text-align: left;
 }
+
+span.active {
+	font-color: green;
+}
+span.inactive {
+	font-color: red;
+}
+}
