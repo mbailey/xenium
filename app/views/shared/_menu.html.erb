@@ -3,8 +3,3 @@
     <li>RAM: <%= format_bytes(@host.total_memory) %> (<%= format_bytes(@host.free_memory) %> free)</li>
     <li>CPUs: <%= @host.nr_cpus %></li>
 </ul>
-<ul id="nav">
-<% %w(slices).each do |item| %>
-  <li id="t-<%= item %>"><%= link_to item, "/#{item}" %></li>
-<% end %>
-</ul>
